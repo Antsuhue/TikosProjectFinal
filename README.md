@@ -3,7 +3,7 @@ Front-end do projeto do Ticos
 
 Subam todos os comits na branch "dev" a "master" apenas quando o projeto for testado e tiver estável.
 
-# Crirar branch nova e navegar entre branchs:
+# Criar branch nova e navegar entre branchs:
 git checkout "nome da branch"
 
 # Criar repositório remoto:
