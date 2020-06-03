@@ -1,4 +1,5 @@
-FLASK_APP=run.py
+FLASK_APP=tikos
 FLASK_ENV=development
+DEBUG=1
 FLASK_RUN_HOST=localhost
 FLASK_RUN_PORT=5000
