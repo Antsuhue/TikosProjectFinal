@@ -4,6 +4,7 @@ from ..extensions.db import mongo
 
 
 format_date = "%d/%m/%Y"
+format_time = "%H:%M:%S"
 
 
 def manageProduct():
@@ -140,6 +141,7 @@ def add_product(name_product):
 
     date = datetime.now()
 
+
     for product in products:
         if product["nome_produto"] == name_product.lower():
 
@@ -151,6 +153,7 @@ def add_product(name_product):
                 "nome_produto": product["nome_produto"],
                 "qnt_produtos_adicionados": qntd,
                 "data": date.strftime(format_date),
+                "horario":date.strftime(format_time),
                 "gasto": spend
             }
 
