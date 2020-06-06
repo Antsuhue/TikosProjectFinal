@@ -1,5 +1,6 @@
-from flask import jsonify, request
+from flask import jsonify, request, make_response, render_template
 from datetime import datetime
+import pdfkit
 from ..extensions.db import mongo
 
 
@@ -168,4 +169,54 @@ def add_product(name_product):
     return jsonify({"status": "Produto nao existe"}), 404
 
 def withdraw_product(name_product):
-    pass
+    req = request.json
+
+    collection_product = mongo.db.products
+    products = collection_product.find()
+
+    collection_report = mongo.db.report
+
+    qntd = req["quantidade"]
+
+    date = datetime.now()
+ 
+
+    for product in products:
+        if product["nome_produto"] == name_product.lower():
+
+            new_qntd = product["quantidade"] - qntd
+
+            if new_qntd >= 0 :
+
+                reportStructure = {
+                    "nome_produto": product["nome_produto"],
+                    "qnt_produtos_retirados": qntd,
+                    "data": date.strftime(format_date),
+                    "horario":date.strftime(format_time)
+                } 
+
+                collection_report.insert(reportStructure)
+
+                collection_product.update_one({"nome_produto": name_product.lower()}, {
+                                            "$set": {"quantidade": new_qntd}})
+                collection_product.update_one({"nome_produto": name_product.lower()}, {
+                                            "$set": {"changed_at": date.strftime(format_date)}})
+                return jsonify({"status": "Quantidade retirada"}), 200
+            else:
+                return jsonify({"status": "Quantidae a ser retirada é maior do que possui no estoque"}), 400
+
+    return jsonify({"status": "Produto nao existe"}), 404
+
+
+def generate_pdf_products():
+
+    rendered = render_template("pdf_relatorio_produtos.html")
+    css = ["static/pdf_products.css"]
+    pdf = pdfkit.from_string(rendered, False, css=css)
+
+    response = make_response(pdf)
+    response.headers["Content-Type"] = "application/pdf"
+    response.headers["Content-Disposition"] = "inline; filename=relatorio_produtos.pdf"
+    
+
+    return response
