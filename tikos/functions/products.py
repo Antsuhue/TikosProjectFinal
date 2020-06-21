@@ -37,8 +37,10 @@ def new_product():
     listProducts = []
     product_name = req["nome_produto"].lower()
     created_at = datetime.now()
+    date = datetime.now()
 
     collection_product = mongo.db.products
+    collection_report = mongo.db.report
 
     products = collection_product.find()
 
@@ -55,6 +57,16 @@ def new_product():
         "created_at": created_at.strftime(format_date)
 
     }
+
+    reportStructure = {
+                    "nome_produto": product["nome_produto"],
+                    "qnt_produtos_inserida": req["quantidade"],
+                    "preco_produto":req["preco"],
+                    "data": date.strftime(format_date),
+                    "horario":date.strftime(format_time)
+                } 
+
+    collection_report.insert(reportStructure)
 
     collection_product.insert(dictProduct)
 
@@ -102,10 +114,16 @@ def edit_product_name(name_product):
 
     products = collection_product.find()
 
+    alterado = datetime.now()
+
     for product in products:
-        if product["nome_produto"] == name_product.lower():
+
+        if req["nome_produto"] == name_product.lower():
+            return jsonify({"status":"Nome digitado é o mesmo que já está cadastrado"}),400
+
+        elif product["nome_produto"] == name_product.lower():
             collection_product.update_one({"nome_produto": name_product.lower()}, {
-                                          "$set": {"nome_produto": new_name}}), 200
+                                          "$set": {"nome_produto": new_name, "changed_at":alterado.strftime(format_date)}}), 200
             return jsonify({"status": "Nome alterado"}), 200
 
     return jsonify({"status": "Produto nao existe"}), 404
@@ -148,14 +166,11 @@ def add_product(name_product):
 
             new_qntd = qntd + product["quantidade"]
 
-            spend = qntd * product["preco"]
-
             reportStructure = {
                 "nome_produto": product["nome_produto"],
                 "qnt_produtos_adicionados": qntd,
                 "data": date.strftime(format_date),
                 "horario":date.strftime(format_time),
-                "gasto": spend
             }
 
             collection_report.insert(reportStructure)
@@ -210,13 +225,39 @@ def withdraw_product(name_product):
 
 def generate_pdf_products():
 
-    rendered = render_template("pdf_relatorio_produtos.html")
-    css = ["static/pdf_products.css"]
-    pdf = pdfkit.from_string(rendered, False, css=css)
+    lista = []
+    listaReports = []
+
+    collection_product = mongo.db.products
+    products = collection_product.find()
+
+    collection_reports = mongo.db.report
+    reports = collection_reports.find()
+
+    for product in products:
+        dictProduct = {product["nome_produto"]: {"preco": product["preco"], "quantidade": product["quantidade"], "preco":str(product["preco"])}}
+        lista.append(dictProduct)
+    
+    for report in reports:
+        if "qnt_produtos_adicionados" in report:
+            dictReports = {report["nome_produto"]: {"qntd": report["qnt_produtos_adicionados"], "data":report["data"], "hora":report["horario"], "gasto": str(report["gasto"]), "status":"Adicionou produtos ao estoque" }}
+            listaReports.append(dictReports)
+
+        elif "qnt_produtos_retirados" in report:
+            dictReports = {report["nome_produto"]: {"qntd": -report["qnt_produtos_retirados"], "data":report["data"], "hora":report["horario"], "status":"Retirou produtos do estoque" }}
+            listaReports.append(dictReports)
+
+        elif "qnt_produtos_inserida" in report:
+            dictReports = {report["nome_produto"]: {"qntd": report["qnt_produtos_inserida"], "data":report["data"], "hora":report["horario"], "status":"Criacao de produto"}}
+            listaReports.append(dictReports)
+
+
+    rendered = render_template("pdf_relatorio_produtos.html", lista=lista, listaReport=listaReports)
+    # css1 = ['pdf_products.css']
+    pdf = pdfkit.from_string(rendered, False)
 
     response = make_response(pdf)
     response.headers["Content-Type"] = "application/pdf"
-    response.headers["Content-Disposition"] = "inline; filename=relatorio_produtos.pdf"
+    response.headers["Content-Disposition"] = "inline; filename=relatorio0_produtos.pdf"
     
-
     return response
