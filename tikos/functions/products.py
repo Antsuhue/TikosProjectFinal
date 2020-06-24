@@ -1,6 +1,7 @@
 from flask import jsonify, request, make_response, render_template
 from datetime import datetime
 import pdfkit
+import base64
 from ..extensions.db import mongo
 
 
@@ -59,7 +60,7 @@ def new_product():
     }
 
     reportStructure = {
-                    "nome_produto": product["nome_produto"],
+                    "nome_produto": req["nome_produto"],
                     "qnt_produtos_inserida": req["quantidade"],
                     "preco_produto":req["preco"],
                     "data": date.strftime(format_date),
@@ -112,6 +113,8 @@ def edit_product_name(name_product):
 
     collection_product = mongo.db.products
 
+    collection_report = mongo.db.report
+
     products = collection_product.find()
 
     alterado = datetime.now()
@@ -122,8 +125,19 @@ def edit_product_name(name_product):
             return jsonify({"status":"Nome digitado é o mesmo que já está cadastrado"}),400
 
         elif product["nome_produto"] == name_product.lower():
+
             collection_product.update_one({"nome_produto": name_product.lower()}, {
-                                          "$set": {"nome_produto": new_name, "changed_at":alterado.strftime(format_date)}}), 200
+                                          "$set": {"nome_produto": new_name, "changed_at":alterado.strftime(format_date)}})
+
+            reportStructure = {
+                    "nome_produto": product["nome_produto"],
+                    "data": alterado.strftime(format_date),
+                    "horario":alterado.strftime(format_time),
+                    "status": f"Nome do produto alterado para {new_name.upper()}"
+                } 
+
+            collection_report.insert(reportStructure)
+
             return jsonify({"status": "Nome alterado"}), 200
 
     return jsonify({"status": "Produto nao existe"}), 404
@@ -131,16 +145,30 @@ def edit_product_name(name_product):
 
 def remove_product(name_product):
 
+    list_products = []
+
     collection_product = mongo.db.products
     products = collection_product.find()
 
-    list_products = []
+    collection_report = mongo.db.report
+
+    data = datetime.now()
 
     for product in products:
         list_products.append(product["nome_produto"])
 
     if name_product.lower() in list_products:
+
+        reportStructure = {
+                "nome_produto": name_product,
+                "data": data.strftime(format_date),
+                "horario":data.strftime(format_time),
+                "status": f"{name_product.upper()} foi removido"
+            }
+
+        collection_report.insert(reportStructure)
         collection_product.delete_one({'nome_produto': name_product.lower()})
+
         return jsonify({"Status": "Produto apagado"}), 200
 
     else:
@@ -250,8 +278,15 @@ def generate_pdf_products():
         elif "qnt_produtos_inserida" in report:
             dictReports = {report["nome_produto"]: {"qntd": report["qnt_produtos_inserida"], "data":report["data"], "hora":report["horario"], "status":"Criacao de produto"}}
             listaReports.append(dictReports)
+        
+        else:
+            dictReports = {report["nome_produto"]: {"data":report["data"], "hora":report["horario"], "status":report["status"]}}
+            listaReports.append(dictReports)
 
 
+    with open("tikos/static/logo_ticos.png", 'rb') as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    
     rendered = render_template("pdf_relatorio_produtos.html", lista=lista, listaReport=listaReports)
     # css1 = ['pdf_products.css']
     pdf = pdfkit.from_string(rendered, False)
