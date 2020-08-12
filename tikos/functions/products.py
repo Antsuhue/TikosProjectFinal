@@ -1,6 +1,6 @@
-from flask import jsonify, request, make_response, render_template
+from flask import jsonify, request, make_response, render_template,url_for
 from datetime import datetime
-import pdfkit
+from flask_weasyprint import HTML, render_pdf
 import base64
 from ..extensions.db import mongo
 
@@ -252,6 +252,9 @@ def withdraw_product(name_product):
 
 
 def generate_pdf_products():
+    
+    image_file = url_for('static', filename="logo_ticos.png")
+    css = url_for('static', filename="pdf_products.css")
 
     lista = []
     listaReports = []
@@ -276,23 +279,16 @@ def generate_pdf_products():
             listaReports.append(dictReports)
 
         elif "qnt_produtos_inserida" in report:
-            dictReports = {report["nome_produto"]: {"qntd": report["qnt_produtos_inserida"], "data":report["data"], "hora":report["horario"], "status":"Criacao de produto"}}
+            dictReports = {report["nome_produto"]: {"qntd": report["qnt_produtos_inserida"], "data":report["data"], "hora":report["horario"], "status":"Criação de produto"}}
             listaReports.append(dictReports)
         
         else:
             dictReports = {report["nome_produto"]: {"data":report["data"], "hora":report["horario"], "status":report["status"]}}
             listaReports.append(dictReports)
 
-
-    with open("tikos/static/logo_ticos.png", 'rb') as image_file:
-        encoded_string = base64.b64encode(image_file.read())
+    html = render_template("/pdf/pdf_relatorio_produtos.html", 
+        lista=lista, 
+        listaReport=listaReports, 
+        image=image_file )
     
-    rendered = render_template("pdf_relatorio_produtos.html", lista=lista, listaReport=listaReports)
-    # css1 = ['pdf_products.css']
-    pdf = pdfkit.from_string(rendered, False)
-
-    response = make_response(pdf)
-    response.headers["Content-Type"] = "application/pdf"
-    response.headers["Content-Disposition"] = "inline; filename=relatorio0_produtos.pdf"
-    
-    return response
+    return render_pdf(HTML(string=html))

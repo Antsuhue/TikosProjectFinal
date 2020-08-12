@@ -1,7 +1,50 @@
- img#logo-tikos{
-    
- }
+body{
+   font-family: Arial, Helvetica, sans-serif;
+   border-bottom: 1px black solid;
+}
 
- h1{
-    color: brown;
- }
+div#cabecalho{
+   background-color: white;
+   padding: 0px;
+   border-bottom: 1px black solid;
+   margin: 50px;
+}
+
+.logo{
+   background: url()
+}
+
+img#imagem{
+   position: realtive;
+   height: 500px;
+   width: 250px;
+   height: 250px;
+   padding-left: 300px;
+}
+fieldset#fieldCabecalho{
+   border: blue;
+}
+legend#fieldLegend{
+
+}
+
+legend#legendEstoque{
+
+}
+th,td {
+   padding: 8px;
+   border: 1px solid black;
+   text-align: center;
+}
+h1#titleTable{
+   text-align: center;
+}
+
+table#tableProducts{
+   width: 97%;
+   border-collapse: collapse;
+   margin: 20px;
+}
+h2#titleTable{
+   font-size:small;
+}

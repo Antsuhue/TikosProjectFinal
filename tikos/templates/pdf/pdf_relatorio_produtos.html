@@ -1,72 +1,71 @@
 <html>
 <head>
     <title>PDF</title>
+    <link rel="sylesheet" href="{{ url_for('static', filename='pdf_products.css') }}"/>
     <style>
+
         body{
             font-family: Arial, Helvetica, sans-serif;
             border-bottom: 1px black solid;
-        }
-
-        div#cabecalho{
+         }
+         
+         div#cabecalho{
             background-color: white;
             padding: 0px;
             border-bottom: 1px black solid;
             margin: 50px;
-            
-        }
-      
-        img#imagem{
+         }
+         
+         .logo{
+            background: url()
+         }
+         
+         img#imagem{
             position: realtive;
             height: 500px;
             width: 250px;
             height: 250px;
-            padding-left: 300px;
-        }
-        fieldset#fieldCabecalho{
+            padding-left: 135px;
+         }
+         fieldset#fieldCabecalho{
             border: blue;
-        }
-        legend#fieldLegend{
-
-        }
-
-        legend#legendEstoque{
-
-        }
-        th,td {
+         }
+         legend#fieldLegend{
+         
+         }
+         
+         legend#legendEstoque{
+         
+         }
+         th,td {
             padding: 8px;
             border: 1px solid black;
             text-align: center;
-        }
-        h1#titleTable{
+         }
+         h1#titleTable{
             text-align: center;
-        }
-
-        table#tableProducts{
-            width: 97%;
+         }
+         
+         table#tableProducts{
+            width: 100%;
             border-collapse: collapse;
             margin: 20px;
-        }
-        h2#titleTable{
+         }
+         h2#titleTable{
             font-size:small;
-        }
+         }
+
     </style>
 </head>
 <body>
-<div id="cabecalho">
-    <fieldset id="fieldCabecalho">
-        <legend id="fieldLegend">
-        <img id="imagem" src="">
-
-        </legend>
-    </fieldset>
-</div>
+{% include "pdf/pdf_header.html" %}
     <div>
         <table id="tableProducts">
             <h1 id="titleTable">ESTOQUE ATUAL</h1>      
             <tr>
                 <th><h2>PRODUTOS</h2></th>
                 <th><h2>QUANTIDADE</h2></th>
-                <th><h2>PRECO</h2></th>
+                <th><h2>PREÇO</h2></th>
             </tr> 
             {% for x in lista %}
             {% for y in x %}
@@ -87,7 +86,7 @@
     </div>
     <br>
     <div id="divReports">
-        <h1 id="titleTable">RELATORIO</h1>
+        <h1 id="titleTable">RELATÓRIO</h1>
         <table id="tableProducts">
             <tr>
                 <th><h2 id="titleTable">PRODUTOS</h2></th>

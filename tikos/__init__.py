@@ -7,5 +7,4 @@ def create_app(config_object="tikos.config.settings"):
     app.config.from_object(config_object)
     views.init_app(app)
     mongo.init_app(app)
-
     return app
