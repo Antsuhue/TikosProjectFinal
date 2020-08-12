@@ -17,7 +17,7 @@
          }
          
          .logo{
-            background: url()
+            background: url() 
          }
          
          img#imagem{
@@ -37,22 +37,39 @@
          legend#legendEstoque{
          
          }
-         th,td {
-            padding: 8px;
+         th#products,td#products {
+            padding: 2px;
             border: 1px solid black;
             text-align: center;
          }
+
+         th#reports,td#reports {
+            padding: 4px;
+            border: 1px solid black;
+            text-align: center;
+         }
+
          h1#titleTable{
             text-align: center;
          }
          
          table#tableProducts{
-            width: 100%;
+            width: 93%;
             border-collapse: collapse;
             margin: 20px;
          }
+
+         table#tableReports{
+            width: 93%;
+            border-collapse: collapse;
+            margin: 20px;
+         }
+
          h2#titleTable{
             font-size:small;
+         }
+         div#divReports{
+            page-break-before: always;
          }
 
     </style>
@@ -63,53 +80,53 @@
         <table id="tableProducts">
             <h1 id="titleTable">ESTOQUE ATUAL</h1>      
             <tr>
-                <th><h2>PRODUTOS</h2></th>
-                <th><h2>QUANTIDADE</h2></th>
-                <th><h2>PREÇO</h2></th>
+                <th id="products"><h2>PRODUTOS</h2></th>
+                <th id="products"><h2>QUANTIDADE</h2></th>
+                <th id="products"><h2>PREÇO</h2></th>
             </tr> 
             {% for x in lista %}
             {% for y in x %}
             <tr>
-                <td>
-                    <p style="font-size:22px"> {{ y.upper() }} </p> 
+                <td id="products">
+                    <p style="font-size:13px"> {{ y.upper() }} </p> 
                 </td>
-                <td>
-                    <p style="font-size:22px"> {{ x[y]["quantidade"] }} </p>
+                <td id="products">
+                    <p style="font-size:13px"> {{ x[y]["quantidade"] }} </p>
                 </td>
-                <td>
-                    <p style="font-size:22px">R$ {{ x[y]["preco"].replace(".",",") }} </p>
+                <td id="products">
+                    <p style="font-size:13px">R$ {{ x[y]["preco"].replace(".",",") }} </p>
                 </td>
             </tr>
             {% endfor %}
             {% endfor %}
         </table>
     </div>
-    <br>
+    <wbr>
     <div id="divReports">
         <h1 id="titleTable">RELATÓRIO</h1>
-        <table id="tableProducts">
+        <table id="tableReports">
             <tr>
-                <th><h2 id="titleTable">PRODUTOS</h2></th>
-                <th><h2 id="titleTable">DATA</h2></th>
-                <th><h2 id="titleTable">HORA</h2></th>
-                <th><h2 id="titleTable">ENTRADAS/SAIDAS</h2></th>
-                <th><h2 id="titleTable">LUCRO/GASTOS</h2></th>
-                <th><h2 id="titleTable">STATUS</h2></th>
+                <th id="reports"><h2 id="titleTable">PRODUTOS</h2></th>
+                <th id="reports"><h2 id="titleTable">DATA</h2></th>
+                <th id="reports"><h2 id="titleTable">HORA</h2></th>
+                <th id="reports"><h2 id="titleTable">ENTRADAS/SAIDAS</h2></th>
+                <th id="reports"><h2 id="titleTable">LUCRO/GASTOS</h2></th>
+                <th id="reports"><h2 id="titleTable">STATUS</h2></th>
             </tr>
             {% for report in listaReport %}
             {% for nameProduct in report %}
             <tr>
-                <td>
+                <td id="reports">
                     <p>{{ nameProduct.upper() }}</p>
                 </td>
-                <td>
+                <td id="reports">
                     <p>{{ report[nameProduct]["data"] }}</p>
                 </td>
-                <td>
+                <td id="reports">
                     <p>{{ report[nameProduct]["hora"] }}</p>
                 </td>
                 {% if "qntd" in report[nameProduct] %}
-                    <td>
+                    <td id="reports">
                         {% if report[nameProduct]["qntd"] > 0 %}
                             <p style="color: green;">{{ report[nameProduct]["qntd"] }}</p>
                         {% elif report[nameProduct]["qntd"] < 0 %}
@@ -119,18 +136,18 @@
                         {% endif %}
                     </td>
                 {% else %}
-                    <td>
+                    <td id="reports">
                         <p> - </p>
                     </td>
                 {% endif %}
-                <td>
+                <td id="reports">
                     {% if "gasto" not in report[nameProduct] %}
                         <p>-</p>
                     {% else %}
                         <p style="color: red;">R$  -{{ report[nameProduct]["gasto"].replace(".",",") }}</p>
                     {% endif %}
                 </td>
-                <td>
+                <td id="reports">
                     <p>{{ report[nameProduct]["status"] }}</p>
                 </td>
             </tr>

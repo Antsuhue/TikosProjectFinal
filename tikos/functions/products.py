@@ -199,6 +199,7 @@ def add_product(name_product):
                 "qnt_produtos_adicionados": qntd,
                 "data": date.strftime(format_date),
                 "horario":date.strftime(format_time),
+                "gasto": qntd*product["preco"]
             }
 
             collection_report.insert(reportStructure)
