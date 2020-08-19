@@ -1,13 +1,30 @@
-<!DOCTYPE>
-<html>
-
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-    <link rel="stylesheet" type="text/css" href="{{url_for('bp.static', filename='pdf_products.css')}}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Tico's</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleLogin.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
-
 <body>
-<h1>Tiko's</h1>
-
+    <header>
+        <img class="logo" src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo">
+        <h1 class="title">Bem vindo ao Ticos</h1>
+    </header>
+    <form class="form">
+            <fieldset class="login">
+                <strong>Login:<i class="fa fa-user"></i></strong> 
+                    <input type="text" placeholder="Digite seu usuário" required>
+                <strong>Senha:<i class="fa fa-lock"></i></strong>
+                    <input type="password" maxlength="20" placeholder="Digite sua senha" required>
+                <span><button>Entrar <i class="fa fa-arrow-circle-right"></i></button></span>
+            </fieldset>
+    </form>
+    <ul class="animation"></ul>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
-
 </html>

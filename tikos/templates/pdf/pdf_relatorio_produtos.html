@@ -2,77 +2,7 @@
 <head>
     <title>PDF</title>
     <link rel="sylesheet" href="{{ url_for('static', filename='pdf_products.css') }}"/>
-    <style>
 
-        body{
-            font-family: Arial, Helvetica, sans-serif;
-            border-bottom: 1px black solid;
-         }
-         
-         div#cabecalho{
-            background-color: white;
-            padding: 0px;
-            border-bottom: 1px black solid;
-            margin: 50px;
-         }
-         
-         .logo{
-            background: url() 
-         }
-         
-         img#imagem{
-            position: realtive;
-            height: 500px;
-            width: 250px;
-            height: 250px;
-            padding-left: 135px;
-         }
-         fieldset#fieldCabecalho{
-            border: blue;
-         }
-         legend#fieldLegend{
-         
-         }
-         
-         legend#legendEstoque{
-         
-         }
-         th#products,td#products {
-            padding: 2px;
-            border: 1px solid black;
-            text-align: center;
-         }
-
-         th#reports,td#reports {
-            padding: 4px;
-            border: 1px solid black;
-            text-align: center;
-         }
-
-         h1#titleTable{
-            text-align: center;
-         }
-         
-         table#tableProducts{
-            width: 93%;
-            border-collapse: collapse;
-            margin: 20px;
-         }
-
-         table#tableReports{
-            width: 93%;
-            border-collapse: collapse;
-            margin: 20px;
-         }
-
-         h2#titleTable{
-            font-size:small;
-         }
-         div#divReports{
-            page-break-before: always;
-         }
-
-    </style>
 </head>
 <body>
 {% include "pdf/pdf_header.html" %}
@@ -91,7 +21,7 @@
                     <p style="font-size:13px"> {{ y.upper() }} </p> 
                 </td>
                 <td id="products">
-                    <p style="font-size:13px"> {{ x[y]["quantidade"] }} </p>
+                    <p style="font-size:13px"> {{ x[y]["qntd"] }} </p>
                 </td>
                 <td id="products">
                     <p style="font-size:13px">R$ {{ x[y]["preco"].replace(".",",") }} </p>

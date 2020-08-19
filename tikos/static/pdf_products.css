@@ -11,7 +11,7 @@ div#cabecalho{
 }
 
 .logo{
-   background: url()
+   background: url() 
 }
 
 img#imagem{
@@ -19,7 +19,7 @@ img#imagem{
    height: 500px;
    width: 250px;
    height: 250px;
-   padding-left: 300px;
+   padding-left: 135px;
 }
 fieldset#fieldCabecalho{
    border: blue;
@@ -31,20 +31,37 @@ legend#fieldLegend{
 legend#legendEstoque{
 
 }
-th,td {
-   padding: 8px;
+th#products,td#products {
+   padding: 2px;
    border: 1px solid black;
    text-align: center;
 }
+
+th#reports,td#reports {
+   padding: 4px;
+   border: 1px solid black;
+   text-align: center;
+}
+
 h1#titleTable{
    text-align: center;
 }
 
 table#tableProducts{
-   width: 97%;
+   width: 93%;
    border-collapse: collapse;
    margin: 20px;
 }
+
+table#tableReports{
+   width: 93%;
+   border-collapse: collapse;
+   margin: 20px;
+}
+
 h2#titleTable{
    font-size:small;
+}
+div#divReports{
+   page-break-before: always;
 }

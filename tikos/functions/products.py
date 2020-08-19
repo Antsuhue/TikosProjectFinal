@@ -1,6 +1,7 @@
-from flask import jsonify, request, make_response, render_template,url_for
+from flask import jsonify, request, make_response, render_template, url_for
 from datetime import datetime
-from flask_weasyprint import HTML, render_pdf
+from flask_weasyprint import HTML, render_pdf, CSS
+from .financial import debit,credit
 import base64
 from ..extensions.db import mongo
 
@@ -34,9 +35,10 @@ def specify_product(name_product):
 
 def new_product():
     dictProduct = {}
-    req = request.json
+    req = request.form
     listProducts = []
     product_name = req["nome_produto"].lower()
+    preco = req["preco"].replace(',','.')
     created_at = datetime.now()
     date = datetime.now()
 
@@ -53,19 +55,19 @@ def new_product():
 
     dictProduct = {
         "nome_produto": req["nome_produto"].lower(),
-        "quantidade": req["quantidade"],
-        "preco": req["preco"],
+        "quantidade": int(req["quantidade"]),
+        "preco": float(preco),
+        "validade": req["validade"],
         "created_at": created_at.strftime(format_date)
-
     }
 
     reportStructure = {
-                    "nome_produto": req["nome_produto"],
-                    "qnt_produtos_inserida": req["quantidade"],
-                    "preco_produto":req["preco"],
+                    "nome_produto": req["nome_produto"].title(),
+                    "qnt_produtos_inserida": int(req["quantidade"]),
+                    "preco_produto": float(req["preco"]),
                     "data": date.strftime(format_date),
                     "horario":date.strftime(format_time)
-                } 
+                }
 
     collection_report.insert(reportStructure)
 
@@ -86,6 +88,7 @@ def list_products():
 
         productStructure = {product["nome_produto"]: {"preco": product["preco"],
                                                       "quantidade": product["quantidade"],
+                                                      "validade": product["validade"],
                                                       "created_at": product["created_at"]}}
 
         listProducts.append(productStructure)
@@ -101,7 +104,7 @@ def search_product(name_product):
 
     for product in products:
         if product["nome_produto"] == name_product.lower():
-            return jsonify({product["nome_produto"]: {"preco": product["preco"], "quantidade": product["quantidade"]}})
+            return jsonify({product["nome_produto"].title(): {"preco": product["preco"], "quantidade": product["quantidade"]}})
 
     return jsonify({"status": "Produto nao existe"}), 404
 
@@ -169,10 +172,10 @@ def remove_product(name_product):
         collection_report.insert(reportStructure)
         collection_product.delete_one({'nome_produto': name_product.lower()})
 
-        return jsonify({"Status": "Produto apagado"}), 200
+        return jsonify({"Status": "Prato apagado"}), 200
 
     else:
-        return jsonify({"Status": "Produto nao encontrado"}), 404
+        return jsonify({"Status": "Prato nao encontrado"}), 404
 
 
 def add_product(name_product):
@@ -187,20 +190,24 @@ def add_product(name_product):
     qntd = req["quantidade"]
 
     date = datetime.now()
-
+ 
 
     for product in products:
         if product["nome_produto"] == name_product.lower():
 
             new_qntd = qntd + product["quantidade"]
 
+            gasto = qntd*product["preco"]
+
             reportStructure = {
                 "nome_produto": product["nome_produto"],
-                "qnt_produtos_adicionados": qntd,
+                "qnt_produtos_adicionados": int(qntd),
                 "data": date.strftime(format_date),
                 "horario":date.strftime(format_time),
-                "gasto": qntd*product["preco"]
+                "gasto": gasto
             }
+
+            debit(gasto)
 
             collection_report.insert(reportStructure)
 
@@ -237,7 +244,7 @@ def withdraw_product(name_product):
                     "qnt_produtos_retirados": qntd,
                     "data": date.strftime(format_date),
                     "horario":date.strftime(format_time)
-                } 
+                }
 
                 collection_report.insert(reportStructure)
 
@@ -253,7 +260,7 @@ def withdraw_product(name_product):
 
 
 def generate_pdf_products():
-    
+
     image_file = url_for('static', filename="logo_ticos.png")
     css = url_for('static', filename="pdf_products.css")
 
@@ -267,7 +274,7 @@ def generate_pdf_products():
     reports = collection_reports.find()
 
     for product in products:
-        dictProduct = {product["nome_produto"]: {"preco": product["preco"], "quantidade": product["quantidade"], "preco":str(product["preco"])}}
+        dictProduct = {product["nome_produto"]: {"preco": product["preco"], "qntd": product["quantidade"], "preco":str(product["preco"])}}
         lista.append(dictProduct)
     
     for report in reports:
@@ -282,14 +289,14 @@ def generate_pdf_products():
         elif "qnt_produtos_inserida" in report:
             dictReports = {report["nome_produto"]: {"qntd": report["qnt_produtos_inserida"], "data":report["data"], "hora":report["horario"], "status":"Criação de produto"}}
             listaReports.append(dictReports)
-        
+
         else:
             dictReports = {report["nome_produto"]: {"data":report["data"], "hora":report["horario"], "status":report["status"]}}
             listaReports.append(dictReports)
 
-    html = render_template("/pdf/pdf_relatorio_produtos.html", 
-        lista=lista, 
-        listaReport=listaReports, 
-        image=image_file )
-    
-    return render_pdf(HTML(string=html))
+    html = render_template("/pdf/pdf_relatorio_produtos.html",
+        lista=lista,
+        listaReport=listaReports,
+        image=image_file)
+
+    return render_pdf(HTML(string=html),stylesheets=url_for('static', filemane='pdf_products.css'))

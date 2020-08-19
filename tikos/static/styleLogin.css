@@ -1,0 +1,210 @@
+/*RESET*/
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/*Colors*/
+
+:root{
+    --red-logo: #742c2d;
+    --green-logo: #b3c647;
+    --button-color: rgba(202, 202, 142, 0.1);
+    --light-color: #f8f8f8;
+}
+
+/*Body*/
+
+html,body{
+    font-family: 'Archivo', sans-serif;
+    height: 100vh;
+    background: var(--red-logo);
+    overflow: hidden;
+}
+
+/*HEADER*/
+
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header .title{
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    color: var(--green-logo);
+}
+
+header img{
+    margin-top: 30px;
+    width: 250px;
+}
+
+/*FORM*/
+
+.form{
+    display: flex;
+    margin: 1rem auto;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--green-logo);
+    width: 100%;
+    max-width: 280px;
+    height: 220px;
+}
+
+.form .login{
+    font-family: "Poppins", sans-serif;
+    max-width: 90%;
+    width: 90%;
+    height: 90%;
+    border: 2px solid #f8f8f8;
+}
+
+.form .login strong{
+    color: var(--green-logo);
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 5px 0 5px;
+    font-size: 1.05rem;
+}
+
+.form .login i{
+    padding: 5px;
+    margin-right: 1px;
+    color: var(--green-logo)
+}
+
+.form .login input{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: 24px;
+    border-radius: 1rem;
+    text-indent: 5px;
+    margin: 5px auto 0 auto;
+    font-size: 0.9rem;
+}
+
+.form .login input:focus{
+    border: 2px solid var(--green-logo);
+}
+
+.form .login span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form .login button{
+    margin-top: 20px;
+    width: 50%;
+    height: 30px;
+    border-radius: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--green-logo);
+    background: var(--red-logo);
+    border: 2px solid var(--green-logo);
+    cursor: pointer;
+}
+
+.form .login button:hover{
+    background: var(--button-color);
+    transition: 500ms;
+}
+
+.form .login button i {
+    color: var(--light-color);
+}
+
+/*ANIMATIONS*/
+
+@keyframes moveX{
+    from{
+        transform: translateX(-102%);
+    }to{
+        transform: translateY(0);
+    }
+}
+
+@keyframes moveY{
+    from{
+        transform: translateY(-100%);
+    }to{
+        transform: translateY(0);
+    }
+}
+
+@keyframes opacity{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
+@keyframes up{
+    from{
+        opacity:0
+    }50%{
+        opacity:1
+    }to{
+        opacity: 0;
+        transform: translateY(-800px) rotate(960deg);
+    }
+}
+
+/*ANIMATIONS FORM*/
+
+.form{
+    animation-name: moveX, opacity;
+    animation-duration: 1.5s;
+    animation-delay: 200ms;
+    animation-fill-mode: backwards;
+}
+
+header img{
+    animation-name: moveY; 
+    animation-duration: 1s;
+    animation-delay: 2s;
+    animation-fill-mode: backwards;
+}
+
+.form .login input{
+    animation-name: opacity;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-fill-mode: backwards;
+}
+
+header h1{
+    animation-name: opacity;
+    animation-duration: 1.5s;
+    animation-delay: 2.5s;
+    animation-fill-mode: backwards;
+}
+
+/*MEDIA QUERIES*/
+
+@media (min-width: 1024px){
+    /*ANIMATION LI*/
+    .animation li{
+        width: 20px;
+        height: 20px;
+        background-color: rgba(63, 19, 19, 0.1);
+        display: block;
+        position: absolute;
+        bottom: -40px;
+        animation: up infinite;
+        animation-direction: alternate;
+        border: 1px var(--green-logo) solid;
+        border-radius: 3px;
+    }
+}

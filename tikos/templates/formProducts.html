@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="_imagens/ticos.png">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cadastroProdutos.css') }}">
+    <title>Form</title>
+</head>
+<body>
+    <section>
+        <form method="post" action="{{ url_for('bp.product') }}">
+                <h2>Cadastrar Produto</h2>
+            <div>
+                <input type="text" id="nome_produto" name="nome_produto" required/>
+                <label>Nome do Produto</label>
+            </div>
+
+            <div>
+                <input type="text" id="preco" name="preco" required/>
+                <label>Preço</label>
+            </div>
+
+            <div>
+                <input type="number" id="quantidade" name="quantidade" required/>
+                <label>Quantidade</label>
+            </div>
+
+            <div>
+                <input type="date" name="validade" class="date"/>
+                <label>Data de validade</label>
+            </div>
+
+            <span><button type="submit">CADASTRAR <i class="fa fa-arrow-circle-right"></i></button></span>
+        </form>
+    </section>
+</body>
+</html>
