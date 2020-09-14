@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/notFound.css') }}">
+    <title>404 - Not Found</title>
+{% endblock %}
+
+{% block content %}
+    <img class="logo" src="{{ url_for('static', filename='images/pp-preview.png') }}" >
+    <p> ERRO 404! </p>
+    <p> A pagina que você tentou acessar não existe!</p>
+    <a href="{{ url_for('bp.index') }}"> Voltar ao inicio </a>
+{% endblock %}

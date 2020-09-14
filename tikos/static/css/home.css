@@ -1,0 +1,232 @@
+/*RESET*/
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/*Colors*/
+
+:root{
+    --red-logo: #742c2d;
+    --red-logo-dark: #5522238a;
+    --green-logo: #b3c647;
+    --green-button-dark: #a3b637;
+    --button-color: rgba(202, 202, 142, 0.1);
+    --light-color: #e5e5e2;
+}
+
+/*Body*/
+
+html,body{
+    font-family: 'Archivo', sans-serif;
+    height: 100vh;
+    background: var(--light-color);
+    font-size: 1em;
+}
+
+div{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+/*HEADER*/
+
+header{
+    width: 15%;
+    height: 100%;
+    max-width: 150px;
+    display: inline-flex;
+    flex-direction: column;
+    background: var(--red-logo);
+    border: 2px solid var(--red-logo-dark);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+header img{
+    width: 100%;
+    padding-bottom:10px;
+    margin-bottom: 30px;
+    background: var(--red-logo-dark);
+    border-bottom: 1px solid var(--green-logo);
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+li{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    width: 91%;
+    margin: 7px 4.5%;
+    padding: 15px;
+    border: 1px solid var(--green-logo);
+    border-radius: 3px;
+    color: var(--green-logo);
+}
+
+li:hover{
+    cursor: pointer;
+    background: var(--green-logo);
+    color: var(--light-color);
+    border-color: var(--light-color);
+}
+
+li i{
+    display: flex;
+}
+
+/*MAIN*/
+
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main .dashboard{
+    margin: 20px auto;
+    font-size: 2rem;
+}
+
+main .button{
+    display: flex;
+    justify-content:center;
+    margin-top: 20px;
+}
+
+a{
+    width: 50%;
+    max-width: 300px;
+}
+
+button{
+    width: 100%;
+    background-color: var(--green-logo);
+    padding:10px;
+    font-family: 'Poppins';
+    font-weight: bold;
+    border-radius: 3px;
+    transition:1ms;
+}
+
+button:hover{
+    background: var(--green-button-dark);
+    cursor: pointer;
+}   
+
+/* DIV ITEMS */
+
+main .items{
+    margin-top: 8px;
+    flex-direction: column;
+}
+
+main .items .item{
+    width: 50%;
+    height: 180px;
+    max-width: 300px;
+    margin: 30px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: springgreen; 
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+
+main .items .item h1{
+    padding: 20px;
+}
+
+main .items .item span h3{
+    width: 100%;
+    border-top: 2px solid black;
+    font-size: 1.2rem;
+    padding:15px 0 0 55px;
+}
+
+main .items .item span h3 i{
+    display: inline-flex;
+    float: right;
+    margin: 0 5px 0 0;
+}
+
+main .items .item span h3 i:hover{
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px){
+    main .items{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    main .items .item h1{
+        padding: 40px;
+        font-size: 2.3rem;
+    }
+
+    main .items .item h3{
+        padding: 20px;
+        font-size:0.9 rem;
+    }
+
+    main button::before{
+        content: 'Novo Produto';
+        margin-left: 5px;
+    }
+
+    main button i {
+        padding:10px;
+    }
+
+    
+}
+
+@media screen and (min-width: 1024px){
+    main .items{
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 5px;
+    }
+
+    main .items .item h1{
+        padding: 40px;
+    }
+
+    main .items .item h3{
+        padding: 20px;
+    }
+
+}
+
+@media screen and (min-width: 1200px){
+    li{
+        justify-content: space-between;
+    }
+
+    li i{
+        margin-top: 4px;
+    }
+
+    li:nth-child(1)::before{
+        content: 'Estoque'; 
+    }
+    li:nth-child(2)::before{
+        content: 'Finanças';
+    }
+    li:nth-child(3)::before{
+        content: 'Relatórios';
+    }
+}
+

@@ -33,7 +33,7 @@ def specify_plate(name_plate):
 
 
 def new_plate():
-    req = request.json
+    req = request.form
     dic_plate = {}
     list_plate = []
 
@@ -54,7 +54,7 @@ def new_plate():
 
     dic_plate = {
         'nome_prato': req['nome_prato'].lower(),
-        'ingredientes': req['ingredientes'],
+    #   'ingredientes': req['ingredientes'],
         'preco_prato': req['preco_prato'],
         'created_at': created_at.strftime(format_date)
     }
@@ -83,7 +83,7 @@ def list_plates():
     for plate in plates:
 
         plateStructure = {plate["nome_prato"]: {"preco_prato": plate["preco_prato"],
-                                                "ingredientes": plate["ingredientes"],
+                                                #"ingredientes": plate["ingredientes"],
                                                 "created_at": plate["created_at"]}}
 
         listPlate.append(plateStructure)
@@ -99,7 +99,8 @@ def search_plate(name_plate):
 
     for plate in plates:
         if plate['nome_prato'] == name_plate.lower():
-            return jsonify({plate['nome_prato']: {'preco_prato': plate['preco_prato'], 'ingredientes': plate['ingredientes']}})
+            return jsonify({plate['nome_prato']: {'preco_prato': plate['preco_prato']}})
+                                            # 'ingredientes': plate['ingredientes']
 
     return jsonify({"status": "Prato nao existe"}), 404
 

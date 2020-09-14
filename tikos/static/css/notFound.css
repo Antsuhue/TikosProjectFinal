@@ -1,0 +1,51 @@
+:root{
+    --red-logo: #742c2d;
+    --green-logo: #b3c647;
+    --button-color: rgba(202, 202, 142, 0.1);
+    --light-color: #f8f8f8;
+}
+
+html{
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+
+    height: 100vh;
+    background: var(--red-logo);
+    color: #f0f0f5;
+    box-sizing: border-box;
+}
+
+.logo{
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%
+
+}
+
+p{
+    color: var(--green-logo);
+    text-align: center;
+}
+
+a{
+    display: grid;
+    text-align:center;
+    text-decoration:none;
+    margin-left: 45%;
+    margin-right: 45%;
+    background-color: var(--light-color);
+    color: var(--red-logo);
+}
+
+a:hover{
+
+    color: var(--white-logo);
+    background-color: #b3c647;
+    padding-left: auto;
+    padding-right: auto;
+
+}

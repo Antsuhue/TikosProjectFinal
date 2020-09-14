@@ -1,32 +1,31 @@
 import os
-from flask import Blueprint,render_template, send_from_directory, redirect
-from ..functions import products, financial, plates
+from flask import Blueprint,render_template, send_from_directory, redirect, url_for
+from ..functions import products, financial, plates, login, graphs
 
 bp = Blueprint("bp", __name__, static_folder="static", template_folder="templates")
 
 def init_app(app):
     app.register_blueprint(bp)
 
-@bp.route('/favicon.ico')
-def favicon(): 
-    return send_from_directory(os.path.join(bp.root_path, 'static'), 'favicon.ico', mimetype='static/favicon.ico')
-
 @bp.route("/", methods=["GET"])
-@bp.route("/home", methods=["GET"])
 def index():
     return "<h1>FUTURA PAGINA DE DOKA LOGADO</h1>"
 
-@bp.route("/login", methods=["GET"])
-def login():
+@bp.route("/login")
+def loginAdm():
     return render_template("index.html")
+
+@bp.route('/auth', methods=["GET"])
+def auth():
+    return login.authLogin()
 
 @bp.route("/product/new")
 def productView():
     return render_template("formProducts.html")
 
-@bp.route("/product/add", methods=["POST"])
+@bp.route("/product/", methods=["POST", "GET"])
 def product():
-    return products.new_product()
+    return products.manageProduct()
 
 @bp.route("/product/<name_product>", methods=["GET", "PUT", "DELETE"])
 def find_product(name_product):
@@ -52,6 +51,18 @@ def new_financial():
 def plate():
     return plates.managePlate()
 
+@bp.route("/plates")
+def view_plates():
+    return render_template("formPlates.html")
+
 @bp.route("/plate/<name_plate>", methods=["GET", "PUT", "DELETE"])
 def find_plate(name_plate):
     return plates.specify_plate(name_plate.lower())
+
+@bp.route("/graphs")
+def dgraphs():
+    return graphs.finance_graph()
+
+@bp.route("/stock")
+def stock():
+    return products.list_products()

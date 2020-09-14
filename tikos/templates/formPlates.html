@@ -7,31 +7,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/cadastroProdutos.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/cadastroPratos.css') }}">
     <title>Cadastrar Produto</title>
 </head>
 <body>
     <section>
-        <form method="POST" action="{{ url_for('bp.product') }}">
-                <h2>Cadastrar Produto</h2>
+        <form method="POST" action="{{ url_for('bp.plate') }}">
+                <h2>Cadastrar Prato</h2>
             <div>
-                <input type="text" name="nome_produto" required/>
+                <input type="text"name="nome_prato" required/>
                 <label>Nome do Produto</label>
             </div>
 
             <div>
-                <input type="text" name="preco" required/>
+                <input type="text" name="preco_prato" required/>
                 <label>Preço</label>
-            </div>
-
-            <div>
-                <input type="number" name="quantidade" required/>
-                <label>Quantidade</label>
-            </div>
-            
-            <div>
-                <input type="date" required>
-                <label>Data de validade</label>
             </div>
             <span><button type="submit">CADASTRAR <i class="fa fa-arrow-circle-right"></i></button></span>
         </form>
