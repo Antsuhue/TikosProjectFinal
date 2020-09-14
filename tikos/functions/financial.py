@@ -8,23 +8,24 @@ createdAt = datetime.now()
 
 
 def credit(value):
-    collection_financial = mongo.db.financial
+    collection_credit = mongo.db.credit
 
     fin = {
-        "valor":value,
+        "valor":round(value,2),
         "createdAt":createdAt.strftime(format_date)
     }
-    collection_financial.insert(fin)
+    collection_credit.insert(fin)
 
-    return jsonify({"financial":"fim"})
+    return jsonify({"Credit":"fim"})
 
 def debit(value):
-    collection_financial = mongo.db.financial
-    
+    collection_debit = mongo.db.debit
+
     fin = {
-        "valor":value,
+        "valor":round(value,2),
         "createdAt":createdAt.strftime(format_date)
     }
-    collection_financial.insert(fin)
 
-    return jsonify({})
+    collection_debit.insert(fin)
+
+    return jsonify({"Debit": "fim"})

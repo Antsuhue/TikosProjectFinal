@@ -1,9 +1,10 @@
-from flask import jsonify, request, make_response, render_template, url_for
+from flask import jsonify, request, make_response, render_template, url_for, redirect
 from datetime import datetime
 from flask_weasyprint import HTML, render_pdf, CSS
 from .financial import debit,credit
-import base64
 from ..extensions.db import mongo
+from ..model import products as modelProduct
+import base64
 
 
 format_date = "%d/%m/%Y"
@@ -38,7 +39,8 @@ def new_product():
     req = request.form
     listProducts = []
     product_name = req["nome_produto"].lower()
-    preco = req["preco"].replace(',','.')
+    price = req["preco"].replace(',','.')
+    convert = float(price)
     created_at = datetime.now()
     date = datetime.now()
 
@@ -51,29 +53,29 @@ def new_product():
         listProducts.append(product["nome_produto"])
 
     if product_name in listProducts:
-        return jsonify({"status": "produto já existente"}), 404
+        return redirect(url_for("bp.productView")), 404
 
-    dictProduct = {
-        "nome_produto": req["nome_produto"].lower(),
-        "quantidade": int(req["quantidade"]),
-        "preco": float(preco),
-        "validade": req["validade"],
-        "created_at": created_at.strftime(format_date)
-    }
+    dictProduct = modelProduct.modelProducts(req["nome_produto"], req["quantidade"],req["preco"])
+
+    # dictProduct = {
+    #     "nome_produto": req["nome_produto"].lower(),
+    #     "quantidade": int(req["quantidade"]),
+    #     "preco":round(convert,2),
+    # #    "validade": req["validade"],
+    #     "created_at": created_at.strftime(format_date)
+    # }
 
     reportStructure = {
                     "nome_produto": req["nome_produto"].title(),
                     "qnt_produtos_inserida": int(req["quantidade"]),
-                    "preco_produto": float(req["preco"]),
+                    "preco_produto": convert,
                     "data": date.strftime(format_date),
                     "horario":date.strftime(format_time)
                 }
 
     collection_report.insert(reportStructure)
-
     collection_product.insert(dictProduct)
-
-    return jsonify({"status": "Adicionado"}), 200
+    return redirect(url_for("bp.Stock2")), 200
 
 
 def list_products():
@@ -87,13 +89,13 @@ def list_products():
     for product in products:
 
         productStructure = {product["nome_produto"]: {"preco": product["preco"],
-                                                      "quantidade": product["quantidade"],
-                                                      "validade": product["validade"],
+                                                      "quantidade": int(product["quantidade"]),
+                                                      #"validade": product["validade"],
                                                       "created_at": product["created_at"]}}
 
-        listProducts.append(productStructure)
+        listProducts.append(productStructure)  
 
-    return jsonify({"produtos": listProducts}), 200
+    return render_template("Stock2.html", listProducts=listProducts)
 
 
 def search_product(name_product):
@@ -204,7 +206,7 @@ def add_product(name_product):
                 "qnt_produtos_adicionados": int(qntd),
                 "data": date.strftime(format_date),
                 "horario":date.strftime(format_time),
-                "gasto": gasto
+                "gasto": round(gasto,2)
             }
 
             debit(gasto)

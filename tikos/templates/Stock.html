@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <title>Home</title>
+</head>
+<body>
+    <div>
+        <header>
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}">
+                <ul>
+                    <li><i class="fa fa-product-hunt"></i></li>
+                    <li><i class="fa fa-money"></i></li>
+                    <li><i class="fa fa-line-chart"></i></li>
+                </ul>
+        </header>
+        <main>
+            <h1 class="dashboard">Estoque</h1>
+
+            <span class="button"><a href="{{ url_for('bp.productView') }}" target="blank"><button><i class="fa fa-plus" aria-hidden="true"></i></button></a></span>
+            <div class="items">
+                <div class="item">
+                    <h1>79</h1>
+                    <span><h3>Feijão<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+
+                <div class="item">
+                    <h1>5</h1>
+                    <span><h3>Arroz<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+
+                <div class="item">
+                    <h1>79</h1>
+                    <span><h3>Beterraba<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+
+                <div class="item">
+                    <h1>9</h1>
+                    <span><h3>Pepino<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+
+                <div class="item">
+                    <h1>60</h1>
+                    <span><h3>Abacate<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+
+                <div class="item">
+                    <h1>700</h1>
+                    <span><h3>Abóbora<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+
+                <div class="item">
+                    <h1>360</h1>
+                    <span><h3>Carne<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+                
+                <div class="item">
+                    <h1>40</h1>
+                    <span><h3>Linguiça<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+
+                <div class="item">
+                    <h1>80</h1>
+                    <span><h3>Carne<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+
+                <div class="item">
+                    <h1>95</h1>
+                    <span><h3>Burrito<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+
+                <div class="item">
+                    <h1>700</h1>
+                    <span><h3>Abóbora<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+
+                <div class="item">
+                    <h1>60</h1>
+                    <span><h3>Carne<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+                
+                <div class="item">
+                    <h1>15</h1>
+                    <span><h3>Linguiça<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+
+                <div class="item">
+                    <h1>62</h1>
+                    <span><h3>Frango<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+
+                <div class="item">
+                    <h1 class="qtd">95</h1>
+                    <span><h3>Burrito<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/colors.js') }}"></script>
+</body>
+</html>
