@@ -95,7 +95,9 @@ def list_products():
 
         listProducts.append(productStructure)  
 
-    return render_template("Stock2.html", listProducts=listProducts)
+    print(listProducts)
+
+    return render_template("Stock.html", listProducts=listProducts)
 
 
 def search_product(name_product):
@@ -264,7 +266,7 @@ def withdraw_product(name_product):
 def generate_pdf_products():
 
     image_file = url_for('static', filename="logo_ticos.png")
-    css = url_for('static', filename="pdf_products.css")
+    css = url_for('static', filename="css/pdf_products.css")
 
     lista = []
     listaReports = []
@@ -301,4 +303,4 @@ def generate_pdf_products():
         listaReport=listaReports,
         image=image_file)
 
-    return render_pdf(HTML(string=html),stylesheets=url_for('static', filemane='pdf_products.css'))
+    return render_pdf(HTML(string=html))

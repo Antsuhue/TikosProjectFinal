@@ -1,0 +1,177 @@
+/*RESET*/
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration:none;
+}
+
+/*Colors*/
+
+:root{
+    --red-logo: #742c2d;
+    --red-logo-dark: #5522238a;
+    --green-logo: #b3c647;
+    --green-button-dark: #a3b637;
+    --button-color: rgba(202, 202, 142, 0.1);
+    --light-color: #e5e5e2;
+    --green-input-dark: rgba(158, 158, 20, .8);
+
+}
+
+/*Body*/
+
+html,body{
+    font-family: 'Archivo', sans-serif;
+    height: 100%;
+    background: var(--light-color);
+    font-size: 1em;
+}
+
+div{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+/*HEADER*/
+
+header{
+    width: 15%;
+    height: 100%;
+    max-width: 150px;
+    position:fixed;
+    background: var(--red-logo);
+    border: 2px solid var(--red-logo-dark);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+header img{
+    width: 100%;
+    padding-bottom:10px;
+    margin-bottom: 30px;
+    background: var(--red-logo-dark);
+    border-bottom: 1px solid var(--green-logo);
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+ul a{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    width: 91%;
+    margin: 7px 4.5%;
+    padding: 15px;
+    border: 1px solid var(--green-logo);
+    border-radius: 3px;
+    color: var(--green-logo);
+}
+
+a:hover{
+    cursor: pointer;
+    background: var(--green-logo);
+    color: var(--light-color);
+    border-color: var(--light-color);
+}
+
+ul a li i{
+    display: flex;
+}
+
+ul a li .fa-home{
+    font-size: 20px;
+}
+
+
+/* MAIN */
+
+main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 15%;
+}
+
+main h1{
+    font-family:'Archivo', sans-serif;
+    text-align: left;
+    margin-top: 1%;
+
+}
+
+main table{
+    background-color: white;
+    width: 30%;
+    border-radius: 5px;
+    margin-left: 60%;
+}
+
+main th{
+    text-align:center;
+    background-color: var(--green-button-dark);
+    width: 10%;
+    padding: 5px;
+    border-radius: 2px;
+    
+}
+main td{
+    text-align: center;
+    padding: 1%;
+    font-size:20px ;
+    
+}
+
+/*Class Table*/
+.top{
+    margin-top: 8%;
+}
+
+.top1{
+margin-top:2.5%
+ }
+ 
+    
+.t
+    
+.td {
+    background-color: var(--green-button-dark);
+    font-family: 'Archivo', sans-serif;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.th {
+    font-size:25px
+}
+
+    /*Media*/
+@media screen and (min-width: 1200px){
+    ul a{
+        justify-content: space-between;
+    }
+
+    ul a li i{
+        margin-top: 4px;
+    }
+
+    ul a:nth-child(1)::before{
+        content: 'Estoque'; 
+    }
+    ul a:nth-child(2)::before{
+        content: 'Finanças';
+    }
+    ul a:nth-child(3)::before{
+        content: 'Relatórios';
+    }
+}

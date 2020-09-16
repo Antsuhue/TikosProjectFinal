@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+a{
+    text-decoration: none;
+}
+
 /*Colors*/
 
 :root{
@@ -39,8 +43,7 @@ header{
     width: 15%;
     height: 100%;
     max-width: 150px;
-    display: inline-flex;
-    flex-direction: column;
+    position:fixed;
     background: var(--red-logo);
     border: 2px solid var(--red-logo-dark);
     border-top-right-radius: 5px;
@@ -61,7 +64,7 @@ ul{
     list-style: none;
 }
 
-li{
+ul a{
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
@@ -73,15 +76,19 @@ li{
     color: var(--green-logo);
 }
 
-li:hover{
+a:hover{
     cursor: pointer;
     background: var(--green-logo);
     color: var(--light-color);
     border-color: var(--light-color);
 }
 
-li i{
+ul a li i{
     display: flex;
+}
+
+ul a li .fa-home{
+    font-size: 20px;
 }
 
 /*MAIN*/
@@ -128,6 +135,7 @@ button:hover{
 main .items{
     margin-top: 8px;
     flex-direction: column;
+    padding-left: 15%;
 }
 
 main .items .item{

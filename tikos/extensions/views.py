@@ -9,7 +9,7 @@ def init_app(app):
 
 @bp.route("/", methods=["GET"])
 def index():
-    return "<h1>FUTURA PAGINA DE DOKA LOGADO</h1>"
+    return products.list_products()
 
 @bp.route("/login")
 def loginAdm():
@@ -43,6 +43,11 @@ def withdraw_qnt_produtcs(name_product):
 def pdf():
     return products.generate_pdf_products()
 
+@bp.route("/financial", methods=["GET"])
+def view_financial():
+    # return render_template("finances.html")
+    return financial.finance_graph()
+
 @bp.route("/financial/new", methods=["POST"])
 def new_financial():
     return financial.new()
@@ -59,10 +64,6 @@ def view_plates():
 def find_plate(name_plate):
     return plates.specify_plate(name_plate.lower())
 
-@bp.route("/graphs")
-def dgraphs():
-    return graphs.finance_graph()
-
-@bp.route("/stock")
-def stock():
-    return products.list_products()
+@bp.route("/reports", methods=["GET"])
+def view_reports():
+    return financial.reports()

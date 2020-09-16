@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/finances.css') }}">
+    <title>finances</title>
+</head>
+<body>
+    <div>
+        <header>
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo">
+                <ul>
+                    <a href="{{ url_for('bp.index') }}"><li><i class="fa fa-home"></i></li></a>
+                    <a href="{{ url_for('bp.view_financial') }}"><li><i class="fa fa-money"></i></li></a>
+                    <a href="#"><li><i class="fa fa-line-chart"></i></li></a>
+                </ul>
+        </header>
+
+        <main>
+            <h1>Finanças</h1>
+
+            <table class="top">
+                <tr>                   
+            <th class="th">
+                <i class="fa fa-money"></i>
+            </th>
+                <Td class="td">
+                    Gastos
+                </Td>
+                </tr>
+                <tr> 
+            <th>
+                Semanal
+            </th>   
+                <td>500</td>
+                </tr>
+                <th>
+                    Mensal
+                </th>   
+                    <td>500</td>
+                    </tr>
+                    <th>
+                        Anual
+                    </th>   
+                        <td>500</td>
+                </tr>
+            <table>
+        </main>
+        <main>
+            <embed style="width: 44%; position: absolute; left: 16%; bottom: 27%;" type="image/svg+xml" src="{{grafico|safe}}" />
+        </main>
+        <main>
+            <table class="top1">
+                <tr>                   
+            <th class="th">
+                <i class="fa fa-money">
+            </th>
+                <Td class="td">Gastos</Td>
+                </tr>
+                <tr> 
+            <th>
+                Açougue
+            </th>   
+                <td>500</td>
+                </tr>
+                <th>
+                    Hortifruit
+                </th>   
+                    <td>500</td>
+                    </tr>
+                    <th>
+                        Mercado
+                    </th>   
+                        <td>500</td>
+                </tr>
+            <table>
+
+        </main>
+    </div>
+    <script></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+/*RESET*/
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration:none;
+}
+
+/*COLORS*/
+
+:root{
+    --red-logo: #742c2d;
+    --red-logo-dark: #5522238a;
+    --green-logo: #b3c647;
+    --green-button-dark: #a3b637;
+    --button-color: rgba(202, 202, 142, 0.1);
+    --light-color: #e5e5e2;
+    --green-input-dark: rgba(158, 158, 20, .8);
+
+}
+
+/*BODY*/
+
+html,body{
+    font-family: 'Archivo', sans-serif;
+    height: 100%;
+    background: var(--light-color);
+    font-size: 1em;
+}
+
+div{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+/*HEADER*/
+
+header{
+    width: 15%;
+    height: 100%;
+    max-width: 150px;
+    position:fixed;
+    background: var(--red-logo);
+    border: 2px solid var(--red-logo-dark);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+header img{
+    width: 100%;
+    padding-bottom:10px;
+    margin-bottom: 30px;
+    background: var(--red-logo-dark);
+    border-bottom: 1px solid var(--green-logo);
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+ul a{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    width: 91%;
+    margin: 7px 4.5%;
+    padding: 15px;
+    border: 1px solid var(--green-logo);
+    border-radius: 3px;
+    color: var(--green-logo);
+}
+
+a:hover{
+    cursor: pointer;
+    background: var(--green-logo);
+    color: var(--light-color);
+    border-color: var(--light-color);
+}
+
+ul a li i{
+    display: flex;
+}
+
+ul a li .fa-home{
+    font-size: 20px;
+}
+
+/* MAIN */
+
+main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 15%;
+}
+
+main h1{
+    display: flex;
+    margin: 30px 0 0 5%;
+}
+
+main h3{
+    margin: 30px 0 0 5%;
+    color: black;
+    font-weight: normal;
+}
+
+main div{
+    display: flex;
+    width: 90%;
+    height: 50px;
+    margin: 80px auto 0 auto;
+    background: #fff;
+    border-radius: 4px;
+}
+main div p{
+    font-weight: bolder;
+    margin: 15px 0 0 10px;
+}
+
+/* FORM */
+
+main form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    background-color: #fff;
+    height: 350px;
+    margin: 40px auto 0 auto;
+    border-radius: 4px;
+    padding: 0 10px 10px 10px;
+}
+
+main form label{
+    margin-top: 10px;
+}
+
+main form input, main form select{
+    font-family: 'Archivo';
+    width: 100%;
+    height: 30px;
+    display: flex;
+    margin-top: 10px;
+}
+
+main form button{
+    font-family: 'Poppins';
+    font-size: 0.8em;
+    margin-top: 30px;
+    height: 40px;
+    background-color: var(--green-logo);
+    border: 1px solid rgba(142, 161, 97, 0.897);
+    color: var(--light-color);
+    font-weight: bold;
+}
+
+main form button i {
+    margin-left: 5px;
+}
+
+main form button:hover{
+    background-color: var(--green-button-dark);
+    cursor: pointer;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 768px){
+    main{
+        margin-left: 120px;
+    }
+    
+    main form {
+        height: 400px;
+    }
+
+    main form label{
+        margin-top: 15px;
+    }
+
+    main form input, main form select{
+        margin-top: 15px;
+    }
+
+    main form button{
+        margin-top: 35px;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    
+    ul a{
+        justify-content: space-between;
+    }
+
+    ul a li i{
+        margin-top: 4px;
+    }
+
+    ul a:nth-child(1)::before{
+        content: 'Estoque'; 
+    }
+    ul a:nth-child(2)::before{
+        content: 'Finanças';
+    }
+    ul a:nth-child(3)::before{
+        content: 'Relatórios';
+    }
+
+    main form{
+        height: 300px;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    main form input, main form select{
+        margin: 50px 25px 0 0;
+        width: 35%;
+    }
+
+    main form label{
+        width: 10%;
+        margin: 25px 0 0 15px;
+    }
+
+    main form button{
+        width: 20%;
+        margin: 70px 20px;
+        justify-content: right;
+    }
+
+    main div p{
+        margin: 15px 0 0 20px;
+    }
+}

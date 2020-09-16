@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reports.css') }}">
+    <title>Home</title>
+</head>
+<body>
+    <div>
+        <header>
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo">
+                <ul>
+                    <a href="{{ url_for('bp.index' ) }}"><li><i class="fa fa-home"></i></li></a>
+                    <a><li><i class="fa fa-money"></i></li></a>
+                    <a><li><i class="fa fa-line-chart"></i></li></a>
+                </ul>
+        </header>
+        <main>
+            <h1>Relatórios</h1>
+            <h3>Os relatórios contém informações sobre estoque, finanças.</h3>
+            <div><p>Selecione o período e o tipo de relatório abaixo:</p></div>
+            <form>
+                <label>Período (de):</label><input type="date">
+                <label>Período (a):</label><input type="date">
+                <label>Tipo do relatório:</label>
+                <select>
+                    <option>Estoque</option>
+                    <option>Financeiro</option>
+                </select>
+                <label>Exportar como:</label>
+                <select>
+                    <option>PDF</option>
+                </select>       
+                <button>GERAR RELATÓRIO <i class="fa fa-line-chart"></i></button>
+            </form>
+        </main>
+    </div>
+    <script></script>
+</body>
+</html>
