@@ -16,8 +16,8 @@
             <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo">
                 <ul>
                     <a href="{{ url_for('bp.index' ) }}"><li><i class="fa fa-home"></i></li></a>
-                    <a><li><i class="fa fa-money"></i></li></a>
-                    <a><li><i class="fa fa-line-chart"></i></li></a>
+                    <a href="{{ url_for('bp.view_financial' ) }}"><li><i class="fa fa-money"></i></li></a>
+                    <a href="{{ url_for('bp.view_reports' ) }}"><li><i class="fa fa-line-chart"></i></li></a>
                 </ul>
         </header>
         <main>

@@ -217,24 +217,24 @@ main .items .item span h3 i:hover{
     }
 
 }
-
+    /*Media*/
 @media screen and (min-width: 1200px){
-    li{
+    ul a{
         justify-content: space-between;
     }
-
-    li i{
+    
+    ul a li i{
         margin-top: 4px;
     }
-
-    li:nth-child(1)::before{
+    
+    ul a:nth-child(1)::before{
         content: 'Estoque'; 
     }
-    li:nth-child(2)::before{
+    ul a:nth-child(2)::before{
         content: 'Finanças';
     }
-    li:nth-child(3)::before{
+    ul a:nth-child(3)::before{
         content: 'Relatórios';
     }
 }
-
+    
