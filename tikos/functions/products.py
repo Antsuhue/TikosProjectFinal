@@ -75,7 +75,7 @@ def new_product():
 
     collection_report.insert(reportStructure)
     collection_product.insert(dictProduct)
-    return redirect(url_for("bp.Stock2")), 200
+    return redirect(url_for("bp.index")), 200
 
 
 def list_products():

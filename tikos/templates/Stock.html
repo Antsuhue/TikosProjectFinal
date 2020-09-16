@@ -29,18 +29,21 @@
                 {% for item in product %}
                     {% if product[item]["quantidade"] >= 50 %}
                     <div class="item">
+                        <i class="fa fa-trash-o"><i class="fa fa-pencil" ></i></i>
                         <h1>{{ product[item]["quantidade"] }}</h1>
-                        <span><h3>{{ item }}<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                        <span><h3>{{ item }}</h3></span>
                     </div>
                     {% elif product[item]["quantidade"] >= 20 %}
                     <div class="item" style="background-color: #FFD700;">
+                        <i class="fa fa-trash-o"><i class="fa fa-pencil" ></i></i>
                         <h1>{{ product[item]["quantidade"] }}</h1>
-                        <span><h3>{{ item }}<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                        <span><h3>{{ item }}</h3></span>
                     </div>
                     {% else %}
                     <div class="item" style="background-color: #B22222;">
+                        <i class="fa fa-trash-o"><i class="fa fa-pencil" ></i></i>
                         <h1>{{ product[item]["quantidade"] }}</h1>
-                        <span><h3>{{ item }}<i class="fa fa-trash-o"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></h3></span>
+                        <span><h3>{{ item }}</h3></span>
                     </div>
                     {% endif %}
                 {% endfor %}

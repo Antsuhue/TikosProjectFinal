@@ -8,7 +8,7 @@
 }
 
 a{
-    text-decoration: none;
+    text-decoration:none;
 }
 
 /*Colors*/
@@ -26,7 +26,7 @@ a{
 
 html,body{
     font-family: 'Archivo', sans-serif;
-    height: 100vh;
+    height: 100%;
     background: var(--light-color);
     font-size: 1em;
 }
@@ -34,7 +34,7 @@ html,body{
 div{
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    height: 100%;
 }
 
 /*HEADER*/
@@ -91,12 +91,15 @@ ul a li .fa-home{
     font-size: 20px;
 }
 
+
+
 /*MAIN*/
 
 main{
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin-left: 15%;
 }
 
 main .dashboard{
@@ -110,7 +113,7 @@ main .button{
     margin-top: 20px;
 }
 
-a{
+main span a{
     width: 50%;
     max-width: 300px;
 }
@@ -135,7 +138,6 @@ button:hover{
 main .items{
     margin-top: 8px;
     flex-direction: column;
-    padding-left: 15%;
 }
 
 main .items .item{
@@ -151,42 +153,49 @@ main .items .item{
     border-radius: 5px;
 }
 
-
 main .items .item h1{
-    padding: 20px;
+    padding: 0 0 20px 0;
+}
+
+main .items .item .fa-trash-o{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+main .items .item i:hover{
+    cursor: pointer;
 }
 
 main .items .item span h3{
     width: 100%;
     border-top: 2px solid black;
     font-size: 1.2rem;
-    padding:15px 0 0 55px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
 }
 
-main .items .item span h3 i{
-    display: inline-flex;
-    float: right;
-    margin: 0 5px 0 0;
-}
-
-main .items .item span h3 i:hover{
-    cursor: pointer;
-}
 
 @media screen and (min-width: 768px){
+    main{
+        margin-left: 150px;
+    }
+
     main .items{
         flex-direction: row;
         flex-wrap: wrap;
     }
 
     main .items .item h1{
-        padding: 40px;
+        padding: 0 0 40px 0px;
+        margin-top: 10px;
         font-size: 2.3rem;
     }
 
-    main .items .item h3{
-        padding: 20px;
+    main .items .item span h3{
         font-size:0.9 rem;
+        padding:20px
     }
 
     main button::before{
@@ -196,9 +205,7 @@ main .items .item span h3 i:hover{
 
     main button i {
         padding:10px;
-    }
-
-    
+    }    
 }
 
 @media screen and (min-width: 1024px){
@@ -207,26 +214,17 @@ main .items .item span h3 i:hover{
         flex-wrap: wrap;
         margin: 5px;
     }
-
-    main .items .item h1{
-        padding: 40px;
-    }
-
-    main .items .item h3{
-        padding: 20px;
-    }
-
 }
-    /*Media*/
+
 @media screen and (min-width: 1200px){
     ul a{
         justify-content: space-between;
     }
-    
+
     ul a li i{
         margin-top: 4px;
     }
-    
+
     ul a:nth-child(1)::before{
         content: 'Estoque'; 
     }
@@ -237,4 +235,3 @@ main .items .item span h3 i:hover{
         content: 'Relatórios';
     }
 }
-    
