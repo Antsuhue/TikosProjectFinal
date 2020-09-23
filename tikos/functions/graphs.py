@@ -12,7 +12,7 @@ def finance_graph():
     credit = collection_credit.find()
 
     ListaGastos = []
-    ListaGanhos = [5, 16]
+    ListaGanhos = [5545, 1600, 5000, 6465, 534, 115, 781, 989, 4944, 5454, 578, 555]
     ListaLucro = []
     ListaDatas = [] #essa vale
     ListaDatas1 = []
@@ -47,14 +47,14 @@ def finance_graph():
     )
     
     chart = pygal.Bar(
-                        title="Financeiro",
-                        style=estilos,
-                        print_values=True,
-                        )
+                    title="Financeiro",
+                    style=estilos,
+                    print_values=False,
+                                       )
 
     chart.add("Gastos", ListaGastos)
-    chart.add("Ganhos", ListaGanhos)
-    chart.add("Lucro/Despesas", ListaLucro)
+    chart.add("Faturamento", ListaGanhos)
+    chart.add("Lucro/Prejuízo", ListaLucro)
 
     chart.x_labels = map(str, sorted(ListaDatas))
     

@@ -41,7 +41,7 @@ def finance_graph():
     credit = collection_credit.find()
 
     ListaGastos = []
-    ListaGanhos = [5, 16]
+    ListaGanhos = [554, 216, 3200, 125, 250, 978, 755, 122, 6897, 1215, 1234, 789]
     ListaLucro = []
     ListaDatas = [] #essa vale
     ListaDatas1 = []
@@ -69,22 +69,39 @@ def finance_graph():
         ListaLucro.append(ListaGanhos[i]-ListaGastos[i])
 
     estilos = Style(
-        plot_background='transparent',
-        background='transparent',
-        opacity_hover='.9',
+        plot_background="#E5E5E2",
+        background="#E5E5E2",
+        opacity='.9',
+        # opacity_hover='.9',
         transition='200ms ease-in',
-        margin=50
+        
+        colors=('#3F1052', '#a3b637', '#E95355'),
+
+        font_family="Poppins, sans-serif",
+        label_font_family="Poppins, sans-serif",
+
+        title_font_size= 100,
+        tooltip_font_size=100,
+
+        major_label_font_size=100, #numeros maiores
+        label_font_size=70,
+        legend_font_size= 80,
     )
-    
-    chart = pygal.Bar(
-                        title="Financeiro",
+
+    chart = pygal.StackedBar(
+                        title="",
                         style=estilos,
-                        print_values=True,
+                        print_values=False,
+                        width=4000,
+                        height=2800,
+                        rounded_bars=8,
+                        tooltip_border_radius=20,
+                        legend_box_size=100
                         )
 
     chart.add("Gastos", ListaGastos)
-    chart.add("Ganhos", ListaGanhos)
-    chart.add("Lucro/Despesas", ListaLucro)
+    chart.add("Faturamento", ListaGanhos)
+    chart.add("Lucro/Prejuizo", ListaLucro)
 
     chart.x_labels = map(str, sorted(ListaDatas))
     

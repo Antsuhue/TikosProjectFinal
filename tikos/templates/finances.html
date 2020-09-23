@@ -8,7 +8,7 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/finances.css') }}">
-    <title>finances</title>
+    <title>Finanças</title>
 </head>
 <body>
     <div>
@@ -20,7 +20,7 @@
                     <a href="{{ url_for('bp.view_reports' ) }}"><li><i class="fa fa-line-chart"></i></li></a>
                 </ul>
         </header>
-
+fixed
         <main>
             <h1>Finanças</h1>
 
@@ -52,7 +52,7 @@
             <table>
         </main>
         <main>
-            <embed style="width: 44%; position: absolute; left: 16%; bottom: 27%;" type="image/svg+xml" src="{{grafico|safe}}" />
+            <embed style="width: 50%; position: fixed; left: 16%; bottom: 27%; top:10%" Botype="image/svg+xml" src="{{grafico|safe}}" />
         </main>
         <main>
             <table class="top1">
@@ -79,8 +79,7 @@
                         <td>500</td>
                 </tr>
             <table>
-
-        </main>
+ </main>
     </div>
     <script></script>
 </body>

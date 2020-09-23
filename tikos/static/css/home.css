@@ -201,6 +201,7 @@ main .items .item span h3{
     main button::before{
         content: 'Novo Produto';
         margin-left: 5px;
+
     }
 
     main button i {

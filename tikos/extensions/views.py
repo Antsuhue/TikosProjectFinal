@@ -1,5 +1,5 @@
 import os
-from flask import Blueprint,render_template, send_from_directory, redirect, url_for
+from flask import Blueprint,render_template, send_from_directory, redirect, url_for, request
 from ..functions import products, financial, plates, login, graphs
 
 bp = Blueprint("bp", __name__, static_folder="static", template_folder="templates")
@@ -45,7 +45,6 @@ def pdf():
 
 @bp.route("/financial/", methods=["GET"])
 def view_financial():
-    # return render_template("finances.html")
     return financial.finance_graph()
 
 @bp.route("/financial/new/", methods=["POST"])

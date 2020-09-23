@@ -114,7 +114,7 @@ main table{
     background-color: white;
     width: 30%;
     border-radius: 5px;
-    margin-left: 60%;
+    margin-left: 65%;
 }
 
 main th{
@@ -135,17 +135,15 @@ main td{
 /*Class Table*/
 .top{
     margin-top: 8%;
+
 }
 
 .top1{
-margin-top:2.5%
+margin-top:6.5%
  }
  
     
-.t
-    
 .td {
-    background-color: var(--green-button-dark);
     font-family: 'Archivo', sans-serif;
     font-weight: bold;
     border-radius: 2px;
