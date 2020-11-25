@@ -10,7 +10,7 @@ for ( let i = 0; i < 16; i++ ) {
   const position = random(10,90);
   const delay = random(5, 0.5);
   const duration = random(24, 12)
-  
+
   li.style.width = `${size}px`;
   li.style.height = `${size}px`;
   li.style.bottom = `-${size}px`;
@@ -21,4 +21,3 @@ for ( let i = 0; i < 16; i++ ) {
 
   animationLi.appendChild(li);
 }
-

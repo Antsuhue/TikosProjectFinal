@@ -121,6 +121,7 @@ main div{
     background: #fff;
     border-radius: 4px;
 }
+
 main div p{
     font-weight: bolder;
     margin: 15px 0 0 10px;
@@ -160,6 +161,7 @@ main form button{
     border: 1px solid rgba(142, 161, 97, 0.897);
     color: var(--light-color);
     font-weight: bold;
+    border: double;
 }
 
 main form button i {
@@ -214,6 +216,24 @@ main form button:hover{
     ul a:nth-child(3)::before{
         content: 'Relatórios';
     }
+    ul a:nth-child(4)::before{
+        content: 'Pratos';
+    }
+    ul a:nth-child(5)::before{
+        content: 'Config';
+    }
+
+    ul a:nth-child(6)::before{
+        content: 'Caixa';
+    }
+
+    ul a:nth-child(7)::before{
+        content: 'Logout';
+    }
+
+   
+    
+    
 
     main form{
         height: 300px;

@@ -1,0 +1,482 @@
+/*RESET*/
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration:none;
+}
+
+/*COLORS*/
+
+:root{
+    --red-logo: #742c2d;
+    --red-logo-dark: #5522238a;
+    --green-logo: #b3c647;
+    --green-button-dark: #a3b637;
+    --button-color: rgba(202, 202, 142, 0.1);
+    --light-color: #e5e5e2;
+    --green-input-dark: rgba(158, 158, 20, .8);
+
+}
+
+/*BODY*/
+
+html,body{
+    font-family: 'Archivo', sans-serif;
+    height: 100%;
+    background: var(--light-color);
+    font-size: 1em;
+}
+
+div{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+/*HEADER*/
+
+header{
+    width: 15%;
+    height: 100%;
+    max-width: 150px;
+    position:fixed;
+    background: var(--red-logo);
+    border: 2px solid var(--red-logo-dark);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+header img{
+    width: 100%;
+    padding-bottom:10px;
+    margin-bottom: 30px;
+    background: var(--red-logo-dark);
+    border-bottom: 1px solid var(--green-logo);
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+ul a{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    width: 91%;
+    margin: 7px 4.5%;
+    padding: 15px;
+    border: 1px solid var(--green-logo);
+    border-radius: 3px;
+    color: var(--green-logo);
+}
+
+ul a:hover{
+    cursor: pointer;
+    background: var(--green-logo);
+    color: var(--light-color);
+    border-color: var(--light-color);
+}
+
+ul a li i{
+    display: flex;
+}
+
+ul a li .fa-home{
+    font-size: 20px;
+}
+
+/* MAIN */
+
+main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 15%;
+}
+
+main h1{
+    display: flex;
+    margin: 40px 0 0 3%;
+}
+
+main h2{
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 1.2rem;
+    margin: 7px;
+}
+
+main h3{
+    display:flex;
+    justify-content:right;
+    color: black;
+    font-weight: bolder;
+    font-size:20px;   
+    background:#fff;
+    border-radius: 5px;
+    padding: 10px;
+    width:550px;
+    margin: 40px 0 0 3%;
+
+}
+
+main div{
+    display: flex;
+    width: 90%;
+    height: 50px;
+    margin: 60px auto 0 0;
+}
+
+
+main div form{
+    font-weight: bolder;
+    margin: 10px 0 0 40px;
+}
+
+/* FORM */
+
+
+main form{
+    display: flex;
+    flex-direction: column;
+    width: 36%;
+    background-color: #fff;
+    margin: 20px auto 0 auto;
+    border-radius: 4px;
+    padding: 0 10px 10px 10px;
+    border: double var(--light-color);
+    height: 500px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 80%;
+}
+
+main form label{
+    margin-top: 10px;
+
+}
+
+main form input, main form select{
+    font-family: 'Archivo';
+    width: 100%;
+    height: 30px;
+    display: flex;
+    margin-top: 10px;
+}
+
+main form button{
+    font-family: 'Poppins';
+    font-size: 0.8em;
+    font-weight: bold;
+    background-color: var(--green-logo);
+    border: 1px solid rgba(142, 161, 97, 0.897);
+    color: var(--light-color);
+    border:double;
+    width: 50%;
+    height: 40px;
+    margin: auto auto;
+}
+
+
+
+main form button i {
+    margin-left: 5px
+}
+
+main form button:hover{
+    background-color: var(--green-button-dark);
+    cursor: pointer;
+}
+
+main div span{
+    justify-content: center;
+}
+
+main .message{
+    display:flex;
+    width:350px;
+    height:50px;
+    justify-content: center;
+    font-weight:bold;
+    font-size: 1.1rem;
+    border: 1px solid rgba(207, 42, 42, 0.7);
+    background: rgba(207, 42, 42, 0.2);
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+main .message span{
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+main .message2{
+    display:flex;
+    width:300px;
+    height:50px;
+    justify-content: center;
+    font-weight:bold;
+    font-size: 1.1rem;
+    border: 1px solid rgba(61, 207, 42, 0.7);
+    background: rgba(2, 170, 16, 0.2);
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto; 
+
+}
+
+main .message2 span{
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 1200px ){
+    
+    ul a{
+        justify-content: space-between;
+    }
+
+    ul a li i{
+        margin-top: 4px;
+    }
+
+    ul a:nth-child(1)::before{
+        content: 'Estoque'; 
+    }
+    ul a:nth-child(2)::before{
+        content: 'Finanças';
+    }
+    ul a:nth-child(3)::before{
+        content: 'Relatórios';
+    }
+    ul a:nth-child(4)::before{
+        content: 'Pratos';
+    }
+    
+    ul a:nth-child(5)::before{
+        content: 'Config';
+    }
+
+    ul a:nth-child(6)::before{
+        content: 'Caixa';
+    }
+
+    ul a:nth-child(7)::before{
+        content: 'Logout';
+    }
+
+
+
+    main form input, main form select{
+        margin: 0 0 0 0;
+    }
+
+    main form label{
+        margin: 30px 0 0 0;
+    }
+
+}
+
+
+@media screen and (max-width: 760px ){
+    
+
+    main form:nth-of-type(1){
+        display: flex;
+        height: 500px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 200px;
+        position:fixed;
+        margin-left: 1%;
+    }
+
+    
+    main form:nth-of-type(2){
+        display: flex;
+        height: 500px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 190px;
+        position:fixed;
+        margin-left: 28%;
+    }
+
+    
+    main form:nth-of-type(3){
+        display: flex;
+        height: 500px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 190px;
+        position:fixed;
+        margin-left:55%
+    }
+}
+
+
+@media screen and (max-width:689px ){
+
+    main form:nth-of-type(1){
+        display: flex;
+        height: 500px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 180px;
+        position:fixed;
+        margin-left: 1%;
+    }
+
+    main form:nth-of-type(2){
+        display: flex;
+        height: 500px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 180px;
+        position:fixed;
+        margin-left: 28%;
+    }
+    
+    main form:nth-of-type(3){
+        display: flex;
+        height: 500px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 180px;
+        position:fixed;
+        margin-left:55%
+    }
+
+
+    
+    main h3{
+        display:flex;
+        justify-content:right;
+        width: 400px;
+    }
+}
+
+@media screen and (max-width:631px ){
+    
+    main form:nth-of-type(1){
+        display: flex;
+        height: 500px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 170px;
+        position:fixed;
+        margin-left: 1%;
+    }
+
+    main form:nth-of-type(2){
+        display: flex;
+        height: 500px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 170px;
+        position:fixed;
+        margin-left: 28%;
+    }
+
+    main form:nth-of-type(3){
+        display: flex;
+        height: 500px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 170px;
+        position:fixed;
+        margin-left:55%
+    }
+}
+
+
+@media screen and (max-width:619px ){
+    
+    main form:nth-of-type(1){
+        display: flex;
+        height: 400px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 150px;
+        position:fixed;
+        margin-left: 1%;
+    }
+    
+    main form:nth-of-type(2){
+        display: flex;
+        height: 400px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 150px;
+        position:fixed;
+        margin-left: 28%;
+    }
+    
+    main form:nth-of-type(3){
+        display: flex;
+        height: 400px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 150px;
+        position:fixed;
+        margin-left:55%
+    }
+
+}
+
+
+@media screen and (max-width:554px ){
+
+    main form:nth-of-type(1){
+        display: flex;
+        height: 400px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 140px;
+        position:fixed;
+        margin-left: 1%;
+    }
+    
+    main form:nth-of-type(2){
+        display: flex;
+        height: 400px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 140px;
+        position:fixed;
+        margin-left: 28%;
+    }
+
+    main form:nth-of-type(3){
+        display: flex;
+        height: 400px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        width: 140px;
+        position:fixed;
+        margin-left:55%
+    }
+    main h3{
+        display:flex;
+        justify-content:right;
+        width: 380px;
+    }
+
+    main form button{
+        width: 70%;
+
+    }
+
+}

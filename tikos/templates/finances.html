@@ -13,74 +13,31 @@
 <body>
     <div>
         <header>
-            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo">
+            <img src="{{ url_for('static', filename='images/ticos.png') }}" alt="Logo">
                 <ul>
                     <a href="{{ url_for('bp.index') }}"><li><i class="fa fa-home"></i></li></a>
                     <a href="{{ url_for('bp.view_financial') }}"><li><i class="fa fa-money"></i></li></a>
                     <a href="{{ url_for('bp.view_reports' ) }}"><li><i class="fa fa-line-chart"></i></li></a>
+                    <a href="{{ url_for('bp.plate') }}"><li><i class="fa fa-product-hunt"></i></li></a>
+                    <a href="{{ url_for('bp.view_config') }}"><li><i class="fa fa-cogs"></i></li></a>
+                    <a href="{{ url_for('bp.view_cashier') }}"><li><i class="fa fa-usd"></i></li></a>
+                    <a href="{{ url_for('bp.logout_session') }}"><li><i class="fa fa-sign-out"></i></li></a>
                 </ul>
         </header>
-fixed
+
         <main>
             <h1>Finanças</h1>
 
-            <table class="top">
-                <tr>                   
-            <th class="th">
-                <i class="fa fa-money"></i>
-            </th>
-                <Td class="td">
-                    Gastos
-                </Td>
-                </tr>
-                <tr> 
-            <th>
-                Semanal
-            </th>   
-                <td>500</td>
-                </tr>
-                <th>
-                    Mensal
-                </th>   
-                    <td>500</td>
-                    </tr>
-                    <th>
-                        Anual
-                    </th>   
-                        <td>500</td>
-                </tr>
-            <table>
+            <div>
+                <embed class="embed1" Botype="image/svg+xml" src="{{grafico|safe}}">
+
+                <div>
+                    <embed class="embed2" Botype="image/svg+xml" src="{{grafico2|safe}}">
+                    <embed class="embed3" Botype="image/svg+xml" src="{{grafico3|safe}}"> 
+                </div>
+            </div>
+
         </main>
-        <main>
-            <embed style="width: 50%; position: fixed; left: 16%; bottom: 27%; top:10%" Botype="image/svg+xml" src="{{grafico|safe}}" />
-        </main>
-        <main>
-            <table class="top1">
-                <tr>                   
-            <th class="th">
-                <i class="fa fa-money">
-            </th>
-                <Td class="td">Gastos</Td>
-                </tr>
-                <tr> 
-            <th>
-                Açougue
-            </th>   
-                <td>500</td>
-                </tr>
-                <th>
-                    Hortifruit
-                </th>   
-                    <td>500</td>
-                    </tr>
-                    <th>
-                        Mercado
-                    </th>   
-                        <td>500</td>
-                </tr>
-            <table>
- </main>
     </div>
-    <script></script>
 </body>
 </html>

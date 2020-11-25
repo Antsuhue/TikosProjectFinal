@@ -8,34 +8,38 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reports.css') }}">
-    <title>Home</title>
+    <title>Relatórios</title>
 </head>
 <body>
     <div>
         <header>
-            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo">
+            <img src="{{ url_for('static', filename='images/ticos.png') }}" alt="Logo">
                 <ul>
-                    <a href="{{ url_for('bp.index' ) }}"><li><i class="fa fa-home"></i></li></a>
-                    <a href="{{ url_for('bp.view_financial' ) }}"><li><i class="fa fa-money"></i></li></a>
+                    <a href="{{ url_for('bp.index') }}"><li><i class="fa fa-home"></i></li></a>
+                    <a href="{{ url_for('bp.view_financial') }}"><li><i class="fa fa-money"></i></li></a>
                     <a href="{{ url_for('bp.view_reports' ) }}"><li><i class="fa fa-line-chart"></i></li></a>
+                    <a href="{{ url_for('bp.plate') }}"><li><i class="fa fa-product-hunt"></i></li></a>
+                    <a href="{{ url_for('bp.view_config') }}"><li><i class="fa fa-cogs"></i></li></a>
+                    <a href="{{ url_for('bp.view_cashier') }}"><li><i class="fa fa-usd"></i></li></a>
+                    <a href="{{ url_for('bp.logout_session') }}"><li><i class="fa fa-sign-out"></i></li></a>
                 </ul>
         </header>
         <main>
             <h1>Relatórios</h1>
             <h3>Os relatórios contém informações sobre estoque, finanças.</h3>
             <div><p>Selecione o período e o tipo de relatório abaixo:</p></div>
-            <form>
-                <label>Período (de):</label><input type="date">
-                <label>Período (a):</label><input type="date">
+            <form action="{{ url_for('bp.pdf') }}">
+                <label>Período (de):</label><input required name="inital_date" type="date">
+                <label>Período (a):</label><input required name="end_date" type="date">
                 <label>Tipo do relatório:</label>
-                <select>
-                    <option>Estoque</option>
-                    <option>Financeiro</option>
+                <select name="tipo_pdf">
+                    <option value="estoque" >Estoque</option>
+                    <option value="pratos" >Pratos</option>
                 </select>
                 <label>Exportar como:</label>
                 <select>
                     <option>PDF</option>
-                </select>       
+                </select>
                 <button>GERAR RELATÓRIO <i class="fa fa-line-chart"></i></button>
             </form>
         </main>

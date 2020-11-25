@@ -1,0 +1,265 @@
+/*RESET*/
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+a{
+    text-decoration:none;
+}
+
+/*COLORS*/
+
+:root{
+    --red-logo: #742c2d;
+    --red-logo-dark: #5522238a;
+    --green-logo: #b3c647;
+    --green-button-dark: #a3b637;
+    --button-color: rgba(202, 202, 142, 0.1);
+    --light-color: #e5e5e2;
+    --green-input-dark: rgba(158, 158, 20, .8);
+
+}
+
+/*BODY*/
+
+html,body{
+    font-family: 'Archivo', sans-serif;
+    height: 100%;
+    background: var(--light-color);
+    font-size: 1em;
+}
+
+/*HEADER*/
+
+header{
+    width: 15%;
+    height: 100%;
+    max-width: 150px;
+    position:fixed;
+    background: var(--red-logo);
+    border: 2px solid var(--red-logo-dark);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+header img{
+    width: 100%;
+    padding-bottom:10px;
+    margin-bottom: 30px;
+    background: var(--red-logo-dark);
+    border-bottom: 1px solid var(--green-logo);
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+ul a{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    width: 91%;
+    margin: 7px 4.5%;
+    padding: 15px;
+    border: 1px solid var(--green-logo);
+    border-radius: 3px;
+    color: var(--green-logo);
+}
+
+ul a:hover{
+    cursor: pointer;
+    background: var(--green-logo);
+    color: var(--light-color);
+    border-color: var(--light-color);
+}
+
+ul a li i{
+    display: flex;
+}
+
+/* MAIN da tela de caixa*/
+
+main{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15%;
+    background-color:rgba(233, 233, 221, 0.1);
+}
+
+main h1{
+    display: flex;
+    margin: 30px 0 0 5%;
+}
+
+ul a li .fa-home{
+    font-size: 20px;
+}
+
+/* Estilo de de caixa */
+
+
+div{
+    display: block;
+}
+
+.tab {
+    width: 70%;
+    margin: 70px auto 0 auto;
+}
+
+.tab .aba[type] {
+    display: none;
+}
+
+.tab label {
+    display: block;
+    float: left;
+    padding: 12px 20px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+.tab label:hover,
+.tab input:checked + label {
+background: var(--green-logo);
+color: #fff;
+}
+
+.tabs {
+    clear: both;
+    perspective: 400px;
+    -webkit-perspective: 400px;
+    display: flex;
+    width: 100%;
+    height: 50%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 4px; 
+}
+
+.tabs .content {
+    background: #fff;
+    width: 100%;
+    position: absolute;
+    padding: 20px 30px;
+    margin-bottom: 300px;
+    line-height: 1.4em;
+    opacity: 0;
+    transform-origin: top center;
+    transition: opacity .3s, transform 2s;
+    z-index: 0;
+}
+
+#tab1:checked ~ .tabs .content:nth-of-type(1),
+#tab2:checked ~ .tabs .content:nth-of-type(2), 
+#tab3:checked ~ .tabs .content:nth-of-type(3) {
+    transform: rotateX(0);
+    opacity: 1;
+    z-index: 1;
+}
+.margemCamposTop{
+    margin-top: 50px;
+}
+.campos{
+    width: 50%;
+    height: 30px;
+    margin-left: 25%;
+    margin-top: 25px;
+    border: 1px solid var(--green-logo);
+    padding: 2px;
+    padding-left: 6px;
+    box-shadow: 2px 4px #d4d2d2;
+}
+
+.conteudo{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #a3b637;
+    justify-content: center;
+    display: block;
+}
+
+.conteudo .btn-registrar{
+    font-family: 'Poppins';
+    font-size: 0.8em;
+    font-weight: bold;
+    background-color: var(--green-logo);
+    border: 1px solid rgba(142, 161, 97, 0.897);
+    color: var(--light-color);
+    border: double;
+    width: 30%;
+    height: 40px;
+    align-items:center;
+    justify-content: center;
+    margin-top: 100px;
+    margin-left: 35%;
+}
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 768px){
+    main{
+        margin-left: 120px;
+    }
+    
+    main form {
+        height: 400px;
+    }
+
+    main form label{
+        margin-top: 15px;
+    }
+
+    main form input, main form select{
+        margin-top: 15px;
+    }
+
+    main form button{
+        margin-top: 35px;
+    }
+}
+
+@media screen and (min-width: 1200px ){
+    
+    
+
+    ul a{
+        justify-content: space-between;
+    }
+
+    ul a li i{
+        margin-top: 4px;
+    }
+
+    ul a:nth-child(1)::before{
+        content: 'Estoque'; 
+    }
+    ul a:nth-child(2)::before{
+        content: 'Finanças';
+    }
+    ul a:nth-child(3)::before{
+        content: 'Relatórios';
+    }
+    ul a:nth-child(4)::before{
+        content: 'Pratos';
+    }
+    
+    ul a:nth-child(5)::before{
+        content: 'Config';
+    }
+
+    ul a:nth-child(6)::before{
+        content: 'Caixa';
+    }
+
+    ul a:nth-child(7)::before{
+        content: 'Logout';
+    }
+}

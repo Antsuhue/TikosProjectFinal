@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/config.css') }}">
+    <title>Config</title>
+</head>
+<body>
+    <div>
+        <header>
+            <img src="{{ url_for('static', filename='images/ticos.png') }}" alt="Logo">
+                <ul>
+                    <a href="{{ url_for('bp.index') }}"><li><i class="fa fa-home"></i></li></a>
+                    <a href="{{ url_for('bp.view_financial') }}"><li><i class="fa fa-money"></i></li></a>
+                    <a href="{{ url_for('bp.view_reports' ) }}"><li><i class="fa fa-line-chart"></i></li></a>
+                    <a href="{{ url_for('bp.plate') }}"><li><i class="fa fa-product-hunt"></i></li></a>
+                    <a href="{{ url_for('bp.view_config') }}"><li><i class="fa fa-cogs"></i></li></a>
+                    <a href="{{ url_for('bp.view_cashier') }}"><li><i class="fa fa-usd"></i></li></a>
+                    <a href="{{ url_for('bp.logout_session') }}"><li><i class="fa fa-sign-out"></i></li></a>
+                </ul>
+        </header>
+        <main>
+
+            <h1>Configuração</h1>
+            <h3>Selecione abaixo as configurações necessarias:</h3>
+
+            {% for message in get_flashed_messages(with_categories=true) %}
+                {% if message[0] == "erro" %}
+                    <div class="message">Erro: <span> {{ message[1] }} </span></div>
+                {% else %}
+                    <div class="message2">Sucesso: <span> {{ message[1] }}</span></div>
+                {% endif %}
+            {% endfor %}
+
+        <div>
+            <form action="{{ url_for('bp.new_user') }}">
+                <h2>Cadastro usuário</h2>
+                <label>Nome do usuário:</label><input name="name" type="text">
+
+                <label>Login:</label><input name="nickname" type="text">
+
+                <label>Nova senha:</label><input name="pass" type="password">
+
+                <label>Confirmar senha:</label><input name="re-pass" type="password">
+   
+                <button>Cadastrar<i class="fa fa-check"></i></button>
+            </form>
+
+            <form>
+                <h2>Itens da página</h2>
+                <label>Quantidade de funcionarios:</label><input value="{{ list[0]['empregados'] }}" type="number">
+               
+                <label>Quantidade de itens por pagina de estoque:</label><input value="{{ list[0]['itens_por_pagina_estoque'] }}" type="number">                
+                
+                <label>Quantidade de itens por pagina de pratos:</label><input value="{{ list[0]['itens_por_pagina_pratos'] }}" type="number">                
+
+                <button>Atualizar <i class="fa fa-check"></i></button>
+            </form>
+
+            <form action="{{url_for('bp.delete_users')}}">
+                <h2>Excluir usuário</h2>
+
+                <label>Usuário:</label>
+                <select name="nome">
+                    {% for nome in list_users %}
+                        <option name="nome" value="{{nome['nome_do_usuario']}}">{{ nome["nome_do_usuario"].title() }}</option>
+                    {% endfor %}
+                </select>
+
+                <label>Senha do usuário:</label><input name="password" type="password">
+
+                <button type="submit">Excluir <i class="fa fa-check"></i></button>
+
+            </form>
+
+        </div>
+
+        </main>
+    </div>
+    <script></script>
+</body>
+</html>
+

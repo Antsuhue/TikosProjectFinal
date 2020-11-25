@@ -7,36 +7,66 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/cadastroProdutos.css') }}">
-    <title>Cadastrar Produto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastroProdutos.css') }}">
+    <title>Home</title>
 </head>
 <body>
-    <section>
-        <form method="POST" action="{{ url_for('bp.product') }}">
-                <h2>Cadastrar Produto</h2>
-            <div>
-                <input type="text" name="nome_produto" required/>
-                <label>Nome do Produto</label>
-            </div>
+    <div>
+        <header>
+            <img src="{{ url_for('static', filename='images/ticos.png') }}" alt="Logo">
+                <ul>
+                    <a href="{{ url_for('bp.index') }}"><li><i class="fa fa-home"></i></li></a>
+                    <a href="{{ url_for('bp.view_financial') }}"><li><i class="fa fa-money"></i></li></a>
+                    <a href="{{ url_for('bp.view_reports' ) }}"><li><i class="fa fa-line-chart"></i></li></a>
+                    <a href="{{ url_for('bp.plate') }}"><li><i class="fa fa-product-hunt"></i></li></a>
+                    <a href="{{ url_for('bp.view_config') }}"><li><i class="fa fa-cogs"></i></li></a>
+                    <a href="{{ url_for('bp.view_cashier') }}"><li><i class="fa fa-usd"></i></li></a>
+                    <a href="{{ url_for('bp.logout_session') }}"><li><i class="fa fa-sign-out"></i></li></a>
+                </ul>
+        </header>
+        <main>
+            <h1>Cadastro de Produtos</h1>
 
-            <div>
-                <input type="text" name="preco" required/>
-                <label>Preço</label>
-            </div>
+            {% for message in get_flashed_messages(with_categories=true) %}
+                {% if message[0] == "erro" %}
+                    <div class="message">Erro: <span> {{ message[1] }} </span></div>
+                {% else %}
+                    <div class="message2">Sucesso: <span> {{ message[1] }}</span></div>
+                {% endif %}
+            {% endfor %}
 
-            <div>
-                <input type="number" name="quantidade" required/>
-                <label>Quantidade</label>
-            </div>
-            
-            <div>
-                <input type="date" required>
-                <label>Data de validade</label>
-            </div>
-            <span><button type="submit">CADASTRAR <i class="fa fa-arrow-circle-right"></i></button></span>
-        </form>
-    </section>
-    <ul class="animation"></ul>
-    <script src="{{ url_for('static',filename='js/script.js') }}"></script>
+            <form class="teste" method="POST" action="{{ url_for('bp.product') }}">
+
+                <label>Nome do Produto:</label>
+
+                <div class="select">
+                    <input type="text" name="nome_produto0" class="product" placeholder="Digite o nome do produto, ex: Arroz." onkeypress="return Letras(event,this);" required>
+
+                    <select name="unidade0" class="medidas">
+                        <option>KG</option>
+                        <option>LTs</option>
+                        <option>Unidade</option>
+                        <option>Pct-1kg</option>
+                        <option>Pct-5kg</option>
+                        <option>Pct-10kg</option>
+                    </select>
+
+                </div>
+
+                <label>Preço:</label><input name="preco0" type="number" min="0" placeholder="Digite o preço do produto, ex: 18." required>
+
+                <label>Quantidade:</label><input name="quantidade0" type="number" min="0" class="input-qtd" placeholder="Digite a quantidade de produtos, ex: 25." required>
+
+                <input type="hidden" class="quantidade-ingrediente" name="quantidade_ingrediente" placeholder="Quantidade de ingredientes" value=1 required>
+
+                <label>Estoque Mínimo:</label><input name="min0" min="0" type="number" class="input-min" placeholder="Digite o estoque mínimo do produto, ex: 50." required>
+
+                <label class="new">Novo Produto<i class="fa fa-plus"></i></label>
+
+                <button type="submit" class="submit">CADASTRAR PRODUTO <i class="fa fa-plates"></i></button>
+            </form>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/formProducts.js') }}"></script>
 </body>
 </html>

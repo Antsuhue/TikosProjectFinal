@@ -1,0 +1,335 @@
+/*RESET*/
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration:none;
+}
+
+/*COLORS*/
+
+:root{
+    --red-logo: #742c2d;
+    --red-logo-dark: #5522238a;
+    --green-logo: #b3c647;
+    --green-button-dark: #a3b637;
+    --button-color: rgba(202, 202, 142, 0.1);
+    --light-color: #e5e5e2;
+    --green-input-dark: rgba(158, 158, 20, .8);
+
+}
+
+/*BODY*/
+
+html,body{
+    font-family: 'Archivo', sans-serif;
+    height: 100%;
+    background: var(--light-color);
+    font-size: 1em;
+}
+
+div{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+/*HEADER*/
+
+header{
+    width: 15%;
+    height: 100%;
+    max-width: 150px;
+    position:fixed;
+    background: var(--red-logo);
+    border: 2px solid var(--red-logo-dark);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+header img{
+    width: 100%;
+    padding-bottom:10px;
+    margin-bottom: 30px;
+    background: var(--red-logo-dark);
+    border-bottom: 1px solid var(--green-logo);
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+ul a{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    width: 91%;
+    margin: 7px 4.5%;
+    padding: 15px;
+    border: 1px solid var(--green-logo);
+    border-radius: 3px;
+    color: var(--green-logo);
+}
+
+ul a:hover{
+    cursor: pointer;
+    background: var(--green-logo);
+    color: var(--light-color);
+    border-color: var(--light-color);
+}
+
+ul a li i{
+    display: flex;
+}
+
+ul a li .fa-home{
+    font-size: 20px;
+}
+
+/* MAIN */
+
+main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 15%;
+}
+
+main h1{
+    display: flex;
+    margin: 30px auto 0 auto;
+}
+
+/* FORM */
+
+main form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    background-color: #fff;
+    height:460px;
+    margin: 60px auto 0 auto;
+    border-radius: 4px;
+    padding: 0 10px 10px 10px;
+}
+
+main form label{
+    margin-top: 10px;
+}
+
+main form input{
+    font-family: 'Archivo';
+    width: 100%;
+    height: 30px;
+    display: flex;
+    margin-top: 10px;
+}
+
+main form .ingredient{
+    display: flex;
+    justify-content: space-between;
+}
+
+main form div{
+    display: flex;
+    width: 100%;
+    height: 60px;
+    margin: 0 auto 0 auto;
+    background: #fff;
+    border-radius: 4px;
+}
+
+main form div .input-ingredient,.input-ingredient2{
+    margin: 10px 0 10px 0;
+    width:55%;
+}
+
+main form div .input-qtd,main form div .input-qtd2{
+    margin: 10px 0 10px 0;
+    width:22.5%;
+}
+
+main form div .medidas, main form div .medidas2{
+    margin: 10px 0 10px 0;
+    width: 22.5%;
+    height: 30px;
+}
+
+
+main .message{
+    display:flex;
+    width:350px;
+    height:50px;
+    justify-content: center;
+    font-weight:bold;
+    font-size: 1.1rem;
+    border: 1px solid rgba(207, 42, 42, 0.7);
+    background: rgba(207, 42, 42, 0.2);
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+
+
+main .message2{
+    display:flex;
+    width:300px;
+    height:50px;
+    justify-content: center;
+    font-weight:bold;
+    font-size: 1.1rem;
+    border: 1px solid rgba(61, 207, 42, 0.7);
+    background: rgba(2, 170, 16, 0.2);
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto; 
+
+}
+
+
+main form button{
+    font-family: 'Poppins';
+    font-size: 0.8em;
+    margin-top: 50px;
+    height: 40px;
+    background-color: var(--green-logo);
+    border: 1px solid rgba(142, 161, 97, 0.897);
+    color: var(--light-color);
+    font-weight: bold;
+    border: double;
+
+}
+
+main form button i {
+    margin-left: 5px;
+}
+
+main form button:hover{
+    background-color: var(--green-button-dark);
+    cursor: pointer;
+}
+
+main form div span a i{
+    color:black;
+    position:static;
+    margin-top:15px;
+    margin-left:10px
+
+}
+
+/* MEDIA QUERIES */
+
+
+
+@media screen and (min-width: 768px){
+    main{
+        margin-left: 120px;
+    }
+
+    main form {
+        max-width: 1000px;
+        margin-top: 90px;
+    }
+
+    main form label{
+        margin-top: 15px;
+    }
+
+    main form input, main form select{
+        margin-top: 15px;
+    }
+
+    main form button{
+        margin-top: 35px;
+    }
+
+    main form div .input-ingredient, main form div .input-ingredient2{
+        width:68%;
+    }
+    
+    main form div .input-qtd,main form div .input-qtd2{
+        width:16%;
+    }
+    
+    main form div .medidas, main form div .medidas2{
+        width: 16%;
+    }
+
+    main form div i{
+        margin-left: 72%;
+    }
+
+}
+
+@media screen and (min-width: 1024px){
+
+
+    main form div .input-ingredient, main form div .input-ingredient2{
+        width:75%;
+    }
+    
+    main form div .input-qtd,main form div .input-qtd2{
+        width:12.5%;
+    }
+    
+    main form div .medidas, main form div .medidas2{
+        width: 12.5%;
+    }
+
+    main form div i{
+        position: absolute;
+        margin-left: 76.5%;
+        margin-top: -8px;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    
+    ul a{
+        justify-content: space-between;
+    }
+
+    ul a li i{
+        margin-top: 4px;
+    }
+
+    ul a:nth-child(1)::before{
+        content: 'Estoque'; 
+    }
+    ul a:nth-child(2)::before{
+        content: 'Finanças';
+    }
+    ul a:nth-child(3)::before{
+        content: 'Relatórios';
+    }
+
+    ul a:nth-child(4)::before{
+        content: 'Pratos';
+    }
+    ul a:nth-child(5)::before{
+        content: 'Config';
+    }
+
+    ul a:nth-child(6)::before{
+        content: 'Caixa';
+    }
+    
+    ul a:nth-child(7)::before{
+        content: 'Logout';
+    }
+
+    main form div i{
+        position: absolute;
+        margin-left: 968px;
+        margin-top: -8px;
+    }
+
+}

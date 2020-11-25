@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/updatePlates.css') }}">
+    <title>Home</title>
+</head>
+<body>
+    <div>
+        <header>
+            <img src="{{ url_for('static', filename='images/ticos.png') }}" alt="Logo">
+                <ul>
+                    <a href="{{ url_for('bp.index') }}"><li><i class="fa fa-home"></i></li></a>
+                    <a href="{{ url_for('bp.view_financial') }}"><li><i class="fa fa-money"></i></li></a>
+                    <a href="{{ url_for('bp.view_reports' ) }}"><li><i class="fa fa-line-chart"></i></li></a>
+                    <a href="{{ url_for('bp.plate') }}"><li><i class="fa fa-product-hunt"></i></li></a>
+                    <a href="{{ url_for('bp.view_config') }}"><li><i class="fa fa-cogs"></i></li></a>
+                    <a href="{{ url_for('bp.logout_session') }}"><li><i class="fa fa-sign-out"></i></li></a>
+                </ul>
+        </header>
+        <main>
+            <h1>Atualização de Pratos</h1>
+
+            {% for message in get_flashed_messages(with_categories=true) %}
+            {% if message[0] == "erro" %}
+                <div class="message">Erro: <span> {{ message[1] }} </span></div>
+            {% else %}
+                <div class="message2">Sucesso: <span> {{ message[1] }}</span></div>
+            {% endif %}
+        {% endfor %}
+
+            <form method="POST" action="{{ url_for('bp.edit_qnt_plate') }}" class="teste">
+
+                <label>Nome do Prato:</label><input type="text" name="nome_prato" value="{{ listPlate[0]['nome_prato'].title() }}" placeholder="Digite o nome do prato, ex: Filé de Frango." onkeypress="return Letras(event,this);" required>
+                <input type="hidden" name="current_name" value="{{ listPlate[0]['nome_prato'] }}">
+
+                <label>Preço do Prato:</label><input type="number" min="0" name="preco" value="{{ listPlate[0]['preco_prato'] }}" placeholder="Digite o preço do prato, ex: 18." required>
+
+                <label class="ingredient">Ingredientes: <i class="fa fa-plus"></i></li></label>
+
+                {% set count = {"value": 0} %}
+                {% for produto in length %}
+                <div class="select">
+                    <input type="text" class="input-ingredient" name="ingrediente{{count.value}}" value="{{ produto['product_name'] }}" placeholder="Digite um ingrediente, ex: Arroz." onkeypress="return Letras(event,this);" required>
+                    <input type="number" min="0" name="quantidade{{count.value}}" class="input-qtd" value="{{ produto['product_qntd'] }}" placeholder="Quantidade" required>
+
+                    <select name="unidade{{count.value}}" class="medidas" placeholder="{{ produto['unidade'] }}">
+                        <option>{{ produto['unidade'] }}</option>
+                        <option>Kilograma</option>
+                        <option>Litros</option>
+                        <option>Unidade</option>
+                        <option>Pacote</option>
+                    </select>
+                    <span class="span"><a href="/delete_ingredient/{{ listPlate[0]['nome_prato'] }}/{{ produto['product_name'] }}"><i class="fa fa-times"></i></a></span>
+                </div>
+
+                {% if count.update({"value": (count.value + 1)}) %} {% endif %}
+                {% endfor %}
+
+                <input type="hidden" name="tamanho" class="tamanho" value="{{ count.value }}">
+                <input type="hidden" name="tamanhoAdd" class="tamanhoAdd" value="0">
+
+                <button type="submit" class="submit">ATUALIZAR PRATO <i class="fa fa-plates"></i></button>
+            </form>
+        </main>
+        <script src="{{ url_for('static', filename='js/updatePlate.js') }}">
+        </script>
+    </div>
+</body>
+</html>
+

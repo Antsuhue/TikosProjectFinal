@@ -27,7 +27,7 @@
         border: blue;
      }
 
-     th#products,td#products {
+     th#plates,td#plates {
         padding: 2px;
         border: 1px solid black;
         text-align: center;
@@ -43,7 +43,7 @@
         text-align: center;
      }
      
-     table#tableProducts{
+     table#tablePlates{
         width: 93%;
         border-collapse: collapse;
         margin: 20px;
@@ -69,23 +69,23 @@
 <body>
 {% include "pdf/pdf_header.html" %}
     <div>
-        <table id="tableProducts">
+        <table id="tablePlates">
             <h1 id="titleTable">ESTOQUE ATUAL</h1>      
             <tr>
-                <th id="products"><h2>PRODUTOS</h2></th>
-                <th id="products"><h2>QUANTIDADE</h2></th>
-                <th id="products"><h2>PREÇO</h2></th>
+                <th id="plates"><h2>PRODUTOS</h2></th>
+                <th id="plates"><h2>QUANTIDADE</h2></th>
+                <th id="plates"><h2>PREÇO</h2></th>
             </tr> 
             {% for x in lista %}
             {% for y in x %}
             <tr>
-                <td id="products">
+                <td id="plates">
                     <p style="font-size:13px"> {{ y.upper() }} </p> 
                 </td>
-                <td id="products">
+                <td id="plates">
                     <p style="font-size:13px"> {{ x[y]["qntd"] }} </p>
                 </td>
-                <td id="products">
+                <td id="plates">
                     <p style="font-size:13px">R$ {{ x[y]["preco"].replace(".",",") }} </p>
                 </td>
             </tr>
@@ -98,7 +98,7 @@
         <h1 id="titleTable">RELATÓRIO</h1>
         <table id="tableReports">
             <tr>
-                <th id="reports"><h2 id="titleTable">PRODUTOS</h2></th>
+                <th id="reports"><h2 id="titleTable">PRATOS</h2></th>
                 <th id="reports"><h2 id="titleTable">DATA</h2></th>
                 <th id="reports"><h2 id="titleTable">HORA</h2></th>
                 <th id="reports"><h2 id="titleTable">ENTRADAS/SAIDAS</h2></th>
@@ -106,25 +106,25 @@
                 <th id="reports"><h2 id="titleTable">STATUS</h2></th>
             </tr>
             {% for report in listaReport %}
-            {% for nameProduct in report %}
+            {% for namePlate in report %}
             <tr>
                 <td id="reports">
-                    <p>{{ nameProduct.upper() }}</p>
+                    <p>{{ namePlate.upper() }}</p>
                 </td>
                 <td id="reports">
-                    <p>{{ report[nameProduct]["data"] }}</p>
+                    <p>{{ report[namePlate]["data"] }}</p>
                 </td>
                 <td id="reports">
-                    <p>{{ report[nameProduct]["hora"] }}</p>
+                    <p>{{ report[namePlate]["hora"] }}</p>
                 </td>
-                {% if "qntd" in report[nameProduct] %}
+                {% if "qntd" in report[namePlate] %}
                     <td id="reports">
-                        {% if report[nameProduct]["qntd"] > 0 %}
-                            <p style="color: green;">{{ report[nameProduct]["qntd"] }}</p>
-                        {% elif report[nameProduct]["qntd"] < 0 %}
-                            <p style="color: red;">{{ report[nameProduct]["qntd"] }}</p>
+                        {% if report[namePlate]["qntd"] > 0 %}
+                            <p style="color: green;">{{ report[namePlate]["qntd"] }}</p>
+                        {% elif report[namePlate]["qntd"] < 0 %}
+                            <p style="color: red;">{{ report[namePlate]["qntd"] }}</p>
                         {% else %}
-                            <p style="color: black;">{{ report[nameProduct]["qntd"] }}</p>
+                            <p style="color: black;">{{ report[namePlate]["qntd"] }}</p>
                         {% endif %}
                     </td>
                 {% else %}
@@ -133,14 +133,14 @@
                     </td>
                 {% endif %}
                 <td id="reports">
-                    {% if "gasto" not in report[nameProduct] %}
+                    {% if "gasto" not in report[namePlate] %}
                         <p>-</p>
                     {% else %}
-                        <p style="color: red;">R$  -{{ report[nameProduct]["gasto"].replace(".",",") }}</p>
+                        <p style="color: red;">R$  -{{ report[namePlate]["gasto"].replace(".",",") }}</p>
                     {% endif %}
                 </td>
                 <td id="reports">
-                    <p>{{ report[nameProduct]["status"] }}</p>
+                    <p>{{ report[namePlate]["status"] }}</p>
                 </td>
             </tr>
             {% endfor %}

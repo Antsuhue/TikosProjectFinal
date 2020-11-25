@@ -1,7 +1,7 @@
 from flask import Flask
 from .extensions import views
 from .extensions.db import mongo
-from .functions import erro
+from .functions import erro, login
 
 def create_app(config_object="tikos.config.settings"):
     app = Flask(__name__)

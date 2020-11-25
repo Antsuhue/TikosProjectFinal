@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/caixa.css') }}">
+    <title>Caixa</title>
+</head>
+<body>
+    <div>
+        <header>
+            <img src="{{ url_for('static', filename='images/ticos.png') }}" alt="Logo">
+                <ul>
+                    <a href="{{ url_for('bp.index') }}"><li><i class="fa fa-home"></i></li></a>
+                    <a href="{{ url_for('bp.view_financial') }}"><li><i class="fa fa-money"></i></li></a>
+                    <a href="{{ url_for('bp.view_reports' ) }}"><li><i class="fa fa-line-chart"></i></li></a>
+                    <a href="{{ url_for('bp.plate') }}"><li><i class="fa fa-product-hunt"></i></li></a>
+                    <a href="{{ url_for('bp.view_config') }}"><li><i class="fa fa-cogs"></i></li></a>
+                    <a href="{{ url_for('bp.view_cashier') }}"><li><i class="fa fa-usd"></i></li></a>
+                    <a href="{{ url_for('bp.logout_session') }}"><li><i class="fa fa-sign-out"></i></li></a>
+                </ul>
+        </header>
+        <main>
+            <h1>Caixa</h1>
+            <div class="tab">
+                <input class="aba" type="radio" name="tabs" id="tab1" checked>
+                <label for="tab1">Registrar Vendas</label>
+
+                <input class="aba" type="radio" name="tabs" id="tab2">
+                <label for="tab2">Reposição de Estoque</label>
+
+                <input class="aba" type="radio" name="tabs" id="tab3">
+                <label for="tab3">Nome da nova tela</label>
+                <div class="tabs">
+                    <div class="content">
+                        <form action="{{ url_for('bp.abatimento') }}" method="post">
+                            <div class="conteudo">
+                                <select class="campos margemCamposTop" name="prato" required>
+                                    {% for prato in list_plate %}
+                                        <option>{{ prato.capitalize() }}</option>
+                                    {% endfor %}
+                                </select>
+                                <input class="campos" type="number" min="0" name="quantidade" placeholder="Quantidade vendida:" required>
+                                <button class="btn-registrar">Registrar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="content">
+                        <div class="conteudo">
+                            <form action="{{ url_for('bp.add_qnt_produtcs') }}" method="POST">
+                                <select class="campos margemCamposTop" name="produto" type="text" placeholder="Produto:" required>
+                                    {% for produto in list_products %}
+                                        <option>{{ produto.capitalize() }}</option>
+                                    {% endfor %}
+                                </select>
+                                <input class="campos" name="quantidade" min="0" type="number" placeholder="Quantidade comprada:" required>
+                                <button class="btn-registrar" type="submit">Registrar</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="conteudo">
+                            <form action="" method="post">
+                                <h1>Esperar o vitor mandar essa parte</h1>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/plates.css') }}">
+    <title>Pratos</title>
+</head>
+<body>
+    <div>
+        <header>
+            <img src="{{ url_for('static', filename='images/ticos.png') }}" alt="Logo">
+                <ul>
+                    <a href="{{ url_for('bp.index') }}"><li><i class="fa fa-home"></i></li></a>
+                    <a href="{{ url_for('bp.view_financial') }}"><li><i class="fa fa-money"></i></li></a>
+                    <a href="{{ url_for('bp.view_reports' ) }}"><li><i class="fa fa-line-chart"></i></li></a>
+                    <a href="{{ url_for('bp.plate') }}"><li><i class="fa fa-product-hunt"></i></li></a>
+                    <a href="{{ url_for('bp.view_config') }}"><li><i class="fa fa-cogs"></i></li></a>
+                    <a href="{{ url_for('bp.view_cashier') }}"><li><i class="fa fa-usd"></i></li></a>
+                    <a href="{{ url_for('bp.logout_session') }}"><li><i class="fa fa-sign-out"></i></li></a>
+                </ul>
+        </header>
+        <main>
+            <h1 class="dashboard">Pratos</h1>
+            <form action="{{ url_for('bp.search_plate') }}" method="POST">
+                <label><input type="search" name="prato" list="pratos" placeholder="Buscar Prato"><button><i class="fa fa-search"></i></button></label>
+                <datalist id="pratos">
+                    {% for pt in listPlates2 %}
+                    {% for name in pt %}
+                        <option>{{ name.capitalize() }}</option>
+                    {% endfor %}
+                    {% endfor %}
+                </datalist>
+            </form>
+
+            <span class="button">
+                <a href="{{ url_for('bp.view_new_plate') }}" target="_self">
+                    <button><i class="fa fa-plus"></i></button>
+                </a>
+            </span>
+
+            <div class="items">
+                {% for plate in listPlates1 %}
+                    {% for item in plate %}
+                        <div class="item">
+                            <form class="submenu" method="post" action="/ideas/{{id}}?_method=DELETE">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <div>
+                                    <a href="/plate/{{ item }}/?_method=DELETE"><i class="fa fa-trash-o"></i></a>
+                                    <a href="/update/plate/{{ item }}"><i class="fa fa-pencil"></i></a>
+                                </div>
+                                <p>{{ item.capitalize() }}</p>
+                                <span><h3>R$ {{ plate[item]["preco_prato"] }}</h3></span>
+                            </form>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </main>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

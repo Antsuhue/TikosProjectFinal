@@ -7,6 +7,12 @@
     box-sizing: border-box;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 a{
     text-decoration:none;
 }
@@ -76,7 +82,7 @@ ul a{
     color: var(--green-logo);
 }
 
-a:hover{
+ul a:hover{
     cursor: pointer;
     background: var(--green-logo);
     color: var(--light-color);
@@ -90,8 +96,6 @@ ul a li i{
 ul a li .fa-home{
     font-size: 20px;
 }
-
-
 
 /*MAIN*/
 
@@ -113,12 +117,33 @@ main .button{
     margin-top: 20px;
 }
 
+main label{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 25px 0 0;
+}
+
+main label input{
+    width: 40%;
+    height: 25px;
+    max-width: 200px;
+}
+
+main label button{
+    background-color: var(--green-logo);
+    width: 8%;
+    max-width: 40px;
+    height: 25px;
+    font-family: 'Poppins';
+    border: 1px solid black;
+}
+
 main span a{
     width: 50%;
     max-width: 300px;
 }
 
-button{
+span a button{
     width: 100%;
     background-color: var(--green-logo);
     padding:10px;
@@ -126,12 +151,50 @@ button{
     font-weight: bold;
     border-radius: 3px;
     transition:1ms;
+    border: 2px solid black;
+
+
+ 
 }
 
-button:hover{
+span a button:hover{
     background: var(--green-button-dark);
     cursor: pointer;
 }   
+
+
+main .message{
+    display:flex;
+    width:370px;
+    height:50px;
+    justify-content: center;
+    font-weight:bold;
+    font-size: 1.1rem;
+    border: 1px solid rgba(207, 42, 42, 0.7);
+    background: rgba(207, 42, 42, 0.2);
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-top: 25px;
+}
+
+main .message2{
+    display:flex;
+    width:300px;
+    height:50px;
+    justify-content: center;
+    font-weight:bold;
+    font-size: 1.1rem;
+    border: 1px solid rgba(61, 207, 42, 0.7);
+    background: rgba(2, 170, 16, 0.2);
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px; 
+
+}
+
+
 
 /* DIV ITEMS */
 
@@ -141,33 +204,141 @@ main .items{
 }
 
 main .items .item{
-    width: 50%;
-    height: 180px;
-    max-width: 300px;
+    width: 65%;
+    max-width:500px;
+    height: 240px;
     margin: 30px auto 0 auto;
     display: flex;
     flex-direction: column;
-    text-align: center;
     background: springgreen; 
     border: 2px solid black;
     border-radius: 5px;
 }
 
-main .items .item h1{
-    padding: 0 0 20px 0;
+main .items .item .form-items{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    margin-top: -10px;
 }
 
-main .items .item .fa-trash-o{
+main .items .item form .inputs{
+    display:flex;
+    justify-content: space-between;
+    width:100%;
+    margin-bottom:10px;
+}
+
+main .items .item form .inputs label{
+    display: flex;
+    justify-content: left;
+    width:0%;
+    margin: 10px 0 0 0;
+    font-size: 1.3rem;
+}
+
+main .items .item form div input{
+    font-size: 1.7rem;
+}
+
+main .items .item form .qntd{
+    display:flex;
+    width:80%;
+    text-align:center;
+    margin: 5px auto 0 auto;
+    height:30px;
+    background: none;
+    border: none;
+}
+
+main .items .item form .product{
+    display: flex;
+    width: 80%;
+    height:30px;
+    margin: 0 auto 0 auto;
+    text-align: center;
+    font-size:1.4rem;
+    background: none;
+    border: none;
+}
+
+main .items .item form .unity{
+    display: flex;
+    text-align: center;
+    width:80%;
+    height:30px;
+    margin: 0 auto 0 auto;
+    background: none;
+    border: none;
+}
+
+main .items .item form .min{
+    display: flex;
+    margin: 5px auto 0 auto;
+    height:30px;
+    text-align: center;
+    width:80%;
+    background: none;
+    border: none;
+}
+
+main .items .item form .submit{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -10px;
+    background: none;
+    border:none;
+}
+
+main .items .item form .submit i{
+    margin: 0 13px 0 0;
+    color: transparent;
+}
+
+main .items .item form .qntd:disabled, main .items .item form .product:disabled,main .items .item form .unity:disabled,main .items .item form .min:disabled{
+    color: black;
+}
+
+main .items .item .times{
+    display:flex;
+    justify-content: flex-end;
+    background: none;
+    border:none;
+}
+
+main .items .item .times .fa-times{
+    margin: -93px 2px 0 0;
+    color: transparent;
+}
+
+main .items .item form div{
+    height: 30px;
     display: flex;
     justify-content: space-between;
     padding: 5px;
 }
 
-main .items .item i:hover{
+main .items .item form div a i{
+    color: black;
+}
+
+main .items .item form h1{
+    padding: 0 0 20px 0;
+}
+
+main .items .item form a{
+    color: black;
+}
+
+main .items .item form a .fa-trash-o{
+    text-decoration: none;
+}
+
+main .items .item form a i:hover{
     cursor: pointer;
 }
 
-main .items .item span h3{
+main .items .item form span h3{
     width: 100%;
     border-top: 2px solid black;
     font-size: 1.2rem;
@@ -187,37 +358,62 @@ main .items .item span h3{
         flex-wrap: wrap;
     }
 
-    main .items .item h1{
-        padding: 0 0 40px 0px;
-        margin-top: 10px;
-        font-size: 2.3rem;
-    }
-
-    main .items .item span h3{
-        font-size:0.9 rem;
-        padding:20px
-    }
-
-    main button::before{
+    main span a button::before{
         content: 'Novo Produto';
         margin-left: 5px;
-
     }
 
-    main button i {
+    main .items .item{
+        width:75%;
+        height:220px;
+    }
+
+    main .items .item form .inputs{
+        margin-left: 15px;
+    }
+
+    main .items .item form .inputs .label3{
+        margin-top: 3px;
+    }
+
+    main .items .item form .inputs .label4{
+        margin-top: 3px;
+    }
+
+    main .items .item form .inputs label{
+        width:20%
+    }
+
+    main .items .item form .inputs .label1::before{
+        content:'Estoque:'
+    }
+    main .items .item form .inputs .label2::before{
+        content:'Mínimo:'
+    }
+    main .items .item form .inputs .label3::before{
+        content:'Produto:'
+    }
+    main .items .item form .inputs .label4::before{
+        content:'Unidade:'
+    }
+
+    main span a button i {
         padding:10px;
     }    
 }
 
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 1200px){
+
     main .items{
         flex-direction: row;
         flex-wrap: wrap;
-        margin: 5px;
+        margin: 10px;
     }
-}
 
-@media screen and (min-width: 1200px){
+    main .items .item form .inputs{
+        margin-left: 30px;
+    }
+
     ul a{
         justify-content: space-between;
     }
@@ -235,4 +431,21 @@ main .items .item span h3{
     ul a:nth-child(3)::before{
         content: 'Relatórios';
     }
+
+    ul a:nth-child(4)::before{
+        content: 'Pratos';
+    }
+
+    ul a:nth-child(5)::before{
+        content: 'Config';
+    }
+
+    ul a:nth-child(6)::before{
+        content: 'Caixa';
+    }
+
+    ul a:nth-child(7)::before{
+        content: 'Logout';
+    }
+    
 }

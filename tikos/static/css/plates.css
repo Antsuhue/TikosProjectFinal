@@ -1,0 +1,283 @@
+/*RESET*/
+main .ts{
+    width: 200px;
+    height: 20px;
+    background: blue;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration:none;
+}
+
+/*Colors*/
+
+:root{
+    --red-logo: #742c2d;
+    --red-logo-dark: #5522238a;
+    --green-logo: #b3c647;
+    --green-button-dark: #a3b637;
+    --button-color: rgba(202, 202, 142, 0.1);
+    --light-color: #e5e5e2;
+}
+
+/*Body*/
+
+html,body{
+    font-family: 'Archivo', sans-serif;
+    height: 100%;
+    background: var(--light-color);
+    font-size: 1em;
+}
+
+div{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+/*HEADER*/
+
+header{
+    width: 15%;
+    height: 100%;
+    max-width: 150px;
+    position:fixed;
+    background: var(--red-logo);
+    border: 2px solid var(--red-logo-dark);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+header img{
+    width: 100%;
+    padding-bottom:10px;
+    margin-bottom: 30px;
+    background: var(--red-logo-dark);
+    border-bottom: 1px solid var(--green-logo);
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+ul a{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    width: 91%;
+    margin: 7px 4.5%;
+    padding: 15px;
+    border: 1px solid var(--green-logo);
+    border-radius: 3px;
+    color: var(--green-logo);
+}
+
+ul a:hover{
+    cursor: pointer;
+    background: var(--green-logo);
+    color: var(--light-color);
+    border-color: var(--light-color);
+}
+
+ul a li i{
+    display: flex;
+}
+
+ul a li .fa-home{
+    font-size: 20px;
+}
+
+/*MAIN*/
+
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 15%;
+}
+
+main .dashboard{
+    margin: 20px auto;
+    font-size: 2rem;
+}
+
+main .button{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+main label{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 25px 0 0;
+}
+
+main label input{
+    width: 40%;
+    height: 25px;
+    max-width: 200px;
+}
+
+main label button{
+    background-color: var(--green-logo);
+    width: 8%;
+    max-width: 40px;
+    height: 25px;
+    font-family: 'Poppins';
+    border: 1px solid black;
+}
+
+main span a{
+    width: 50%;
+    max-width: 300px;
+    margin: auto;
+}
+
+main span a button{
+    width: 100%;
+    background-color: var(--green-logo);
+    padding:10px;
+    font-family: 'Poppins';
+    font-weight: bold;
+    border-radius: 3px;
+    transition:1ms;
+    margin-top: 20px;
+    border: 2px solid black;
+
+}
+
+main span a button:hover,main label button:hover{
+    background: var(--green-button-dark);
+    cursor: pointer;
+}
+
+/* DIV ITEMS */
+
+main .items{
+    margin-top: 8px;
+    flex-direction: column;
+}
+
+main .items .item{
+    width: 80%;
+    height: 200px;
+    max-width: 350px;
+    margin: 30px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: #57ca4c;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+main .items .item form div{
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding:5px
+}
+
+main .items .item p{
+    font-size: 1.6rem;
+    margin-top: 20px;
+    font-weight: bold;
+    padding: 0 0 60px 0;
+}
+
+main .items .item form a .fa-pencil{
+    color: black;
+}
+
+main .items .item form a .fa-trash-o{
+    color: black;
+}
+
+main .items .item i:hover{
+    cursor: pointer;
+}
+
+main .items .item span h3{
+    width: 100%;
+    border-top: 2px solid black;
+    font-size: 1.2rem;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 768px){
+
+    main span a button::before{
+        content: 'Novo Prato';
+        margin-left: 5px;
+    }
+
+    main span button i {
+        padding:10px;
+    } 
+}
+
+@media screen and (min-width: 1024px){
+    main{
+        margin-left: 150px;
+    }
+
+    main .items{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (min-width: 1200px){
+
+    main .items .item p{
+        font-size: 1.7rem;
+    }    
+
+    ul a{
+        justify-content: space-between;
+    }
+
+    ul a li i{
+        margin-top: 4px;
+    }
+
+    ul a:nth-child(1)::before{
+        content: 'Estoque'; 
+    }
+    ul a:nth-child(2)::before{
+        content: 'Finanças';
+    }
+    ul a:nth-child(3)::before{
+        content: 'Relatórios';
+    }
+    ul a:nth-child(4)::before{
+        content: 'Pratos';
+    }
+    ul a:nth-child(5)::before{
+        content: 'Config';
+    }
+    ul a:nth-child(6)::before{
+        content: 'Caixa';
+    }
+
+    ul a:nth-child(7)::before{
+        content: 'Logout';
+    }
+    
+}
+

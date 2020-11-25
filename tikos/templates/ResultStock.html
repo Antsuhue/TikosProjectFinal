@@ -29,7 +29,7 @@
             <form action="{{ url_for('bp.search_product') }}" method="POST">
                 <label><input type="search" name="produto" list="produtos" placeholder="Buscar Produto"><button type="submit"><i class="fa fa-search"></i></button></label>
                 <datalist id="produtos">
-                    {% for pd in listProducts %}
+                    {% for pd in listProducts2 %}
                     {% for nm in pd %}
                         <option>{{ nm.capitalize() }}</option>
                     {% endfor %}
@@ -38,14 +38,6 @@
             </form>
 
             <span class="button"><a href="{{ url_for('bp.productView') }}" target="_self"><button><i class="fa fa-plus" aria-hidden="true"></i></button></a></span>
-            
-            {% for message in get_flashed_messages(with_categories=true) %}
-                {% if message[0] == "erro" %}
-                    <div class="message">Erro: <span> {{ message[1] }} </span></div>
-                {% else %}
-                    <div class="message2">Sucesso: <span> {{ message[1] }}</span></div>
-                {% endif %}
-            {% endfor %}
 
             <div class="items">
                 {% for product in listProducts %}
@@ -70,7 +62,7 @@
                                 <div class="inputs"><label class="label4"></label><input type="text" name='unidade' class="unity" value="{{ product[item]['unidade'] }}" required disabled></div>
                             </form>
 
-                            <button class="times"><a href="{{ url_for('bp.index') }}"><i class="fa fa-times"></i></a></button>
+                            <button class="times"><i class="fa fa-times"></i></button>
 
                             <form class="submenu" method="post" action="/ideas/{{id}}?_method=PUT">
                                 <input type="hidden" name="_method" value="PUT">
@@ -83,7 +75,7 @@
                                 <input type="hidden" name="_method" value="DELETE">
                                 <div>
                                     <a href="/product/{{ item }}/?_method=DELETE"><i class="fa fa-trash-o"></i></a>
-                                    <a><i class="fa fa-pencil"></i></a>
+                                    <a ><i class="fa fa-pencil"></i></a>
                                 </div>
                             </form>
 
@@ -96,7 +88,7 @@
                                 <div class="inputs"><label class="label4"></label><input type="text" name='unidade' class="unity" value="{{ product[item]['unidade'] }}" required disabled></div>
                             </form>
 
-                            <button class="times"><a href="{{ url_for('bp.index') }}"><i class="fa fa-times"></a></i></button>
+                            <button class="times"><i class="fa fa-times"></i></button>
 
                             <form class="submenu" method="post" action="/ideas/{{id}}?_method=PUT">
                                 <input type="hidden" name="_method" value="PUT">
@@ -108,7 +100,7 @@
                                 <input type="hidden" name="_method" value="DELETE">
                                 <div>
                                     <a href="/product/{{ item }}/?_method=DELETE"><i class="fa fa-trash-o"></i></a>
-                                    <a><i class="fa fa-pencil"></i></a>
+                                    <a ><i class="fa fa-pencil"></i></a>
                                 </div>
                             </form>
 
@@ -121,7 +113,7 @@
                                 <div class="inputs"><label class="label4"></label><input type="text" name='unidade' class="unity" value="{{ product[item]['unidade'] }}" required disabled></div>
                             </form>
 
-                            <button class="times"><a href="{{ url_for('bp.index') }}"><i class="fa fa-times"></i></a></button>
+                            <button class="times"><i class="fa fa-times"></i></button>
 
                             <form class="submenu" method="post" action="/ideas/{{id}}?_method=PUT">
                                 <input type="hidden" name="_method" value="PUT">
